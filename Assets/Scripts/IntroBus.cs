@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class IntroBus : MonoBehaviour {
 
@@ -9,11 +8,12 @@ public class IntroBus : MonoBehaviour {
 
 	void Start () {
 		rb = this.gameObject.GetComponent<Rigidbody2D> ();
-		rb.velocity = new Vector2 (10, 0);
+		rb.velocity = new Vector2 (6, 0);
 	}
 
 	void Update () {
-		if(transform.position.x>5)
-			SceneManager.LoadScene ("main");
+		if(transform.position.x > 2) {
+			rb.velocity = new Vector2 (0, 0);
+		}
 	}
 }
