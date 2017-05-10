@@ -7,8 +7,9 @@ Git Dev workflow
     - checkout Dev
     - pull Dev
     - Create Branch "issue "
-    - hack hakc hakc
+    - hack hack hack
     - git add git commit
+    - (maybe git pull if necessary)
     - git push
-    - git merge "issue " Dev
+    - create pull request "issue " Dev
     - DONE!
