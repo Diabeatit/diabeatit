@@ -8,8 +8,11 @@ public class KitchenLoader : MonoBehaviour {
 
 	void OnMouseDown() {
 
-		if (levelToLoad == "back") {
-			SceneManager.LoadScene ("Kitchen");
+		if (levelToLoad.Equals("home")) {
+			SceneManager.LoadScene ("home");
+
+			dialogue_home_intro.box.setDialogue (6);
+			dialogue_home_intro.box.setIntro (false);
 		} else {
 			SceneManager.LoadScene (levelToLoad);
 		}
