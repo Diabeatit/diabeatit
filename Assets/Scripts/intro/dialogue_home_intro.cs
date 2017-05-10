@@ -11,6 +11,7 @@ public class dialogue_home_intro : MonoBehaviour {
 	public static bool intro = true;
 
 	// Initialize dialogue count and first message
+	// intro flag to prevent intro dialogue from appearing more than once
 	void Start () {
 		if (intro) {
 			dialogue = 1;
@@ -20,7 +21,7 @@ public class dialogue_home_intro : MonoBehaviour {
 		}
 	}
 	
-	// Display message based on dialogue
+	// Display message based on dialogue and disappear when finished
 	void Update () {
 		if (Input.GetMouseButtonDown (0)) {
 			if (dialogue == 1) {
