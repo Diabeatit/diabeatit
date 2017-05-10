@@ -4,21 +4,34 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class dialogue_home_intro : MonoBehaviour {
+	public static dialogue_home_intro box;
 
 	public GameObject target;
 	public Text bubble;
-	public int dialogue;
+	private int dialogue = 0;
 	public static bool intro = true;
 
 	// Initialize dialogue count and first message
 	// intro flag to prevent intro dialogue from appearing more than once
 	void Start () {
+		box = this;
+
 		if (intro) {
-			dialogue = 1;
+			box.dialogue = 1;
 			bubble.text = "Welcome to my house! Feel free to explore it to learn how I live with diabetes.";
 		} else {
 			target.SetActive (false);
 		}
+	}
+
+	// Set the Dialogue
+	public void setDialogue (int value) {
+		box.dialogue = value;
+	}
+
+	// Set the Intro boolean
+	public void setIntro (bool boolean) {
+		intro = boolean;
 	}
 	
 	// Display message based on dialogue and disappear when finished
@@ -34,11 +47,13 @@ public class dialogue_home_intro : MonoBehaviour {
 				bubble.text = "Juice is good but is there a better option?";
 			} else if (dialogue == 5) {
 				bubble.text = "Today is so beautiful! Let’s do something outside!";
+			} else if (box.dialogue == 6) {
+				bubble.text = "What's next?";
 			} else {
 				target.SetActive (false);
 			}
 			intro = false;
-			dialogue++;
+//			dialogue++;
 		}
 			
 	}
