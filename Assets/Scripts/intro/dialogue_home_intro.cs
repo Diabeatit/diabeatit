@@ -53,7 +53,7 @@ public class dialogue_home_intro : MonoBehaviour {
 				target.SetActive (false);
 			}
 			intro = false;
-//			dialogue++;
+			dialogue++;
 		}
 			
 	}
