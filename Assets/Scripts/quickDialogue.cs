@@ -28,7 +28,6 @@ public class quickDialogue : MonoBehaviour {
 				display = true;
 			} else {
 				target.SetActive (false);
-				display = false;
 			}
 		}
 
