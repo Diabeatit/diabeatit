@@ -44,7 +44,7 @@ public class zach_bus_walk : MonoBehaviour {
 
 		// When Zach reaches end of screen, switch to "walking" scene
 		if(transform.position.x > 7) {
-			SceneManager.LoadScene ("walking");
+			SceneManager.LoadScene ("intro2");
 		}
 	}
 }
