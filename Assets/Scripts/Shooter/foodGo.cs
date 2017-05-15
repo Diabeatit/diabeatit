@@ -33,7 +33,6 @@ public class foodGo : MonoBehaviour {
         if(pos.x<min.x){
             Destroy(gameObject);
 			PlayerController.decCount();
-			//PlayerController.SetCountText();
         }
 
 	}

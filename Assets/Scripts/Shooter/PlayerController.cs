@@ -68,7 +68,14 @@ public class PlayerController : MonoBehaviour {
             other.gameObject.SetActive(false);
             Destroy(other.gameObject);
 			incCount();
-            SetCountText();
+        }
+
+        //decriment the count if collide with candy
+        else if (other.gameObject.CompareTag("Candy")){
+            other.gameObject.SetActive(false);
+            Destroy(other.gameObject);
+			decCount();
+
         }
     }
 
