@@ -32,7 +32,12 @@ public class foodGo : MonoBehaviour {
 
         if(pos.x<min.x){
             Destroy(gameObject);
-			PlayerController.decCount();
+			if(this.gameObject.CompareTag("Food")){
+                PlayerController.incCount();
+            }
+			else if(this.gameObject.CompareTag("Candy")){
+                PlayerController.decCount();
+            }
         }
 
 	}
@@ -42,19 +47,19 @@ public class foodGo : MonoBehaviour {
 
 
 		// Detect collision with bullet
-		if (other.gameObject.CompareTag("Laser") && this.gameObject.CompareTag("Candy")){
+		if (other.gameObject.CompareTag ("Laser") && this.gameObject.CompareTag ("Candy")) {
 
-			Destroy(other.gameObject);
-			Destroy(gameObject);
+			Destroy (other.gameObject);
+			Destroy (gameObject);
+			PlayerController.incCount ();
 
-		}
-		if (other.gameObject.CompareTag("Laser") && this.gameObject.CompareTag("Food")){
+		} 
+		else if (other.gameObject.CompareTag ("Laser") && this.gameObject.CompareTag ("Food")) {
 
-			Destroy(other.gameObject);
-			Destroy(gameObject);
+			Destroy (other.gameObject);
+			Destroy (gameObject);
 			PlayerController.decCount ();
 
-		}
-
+		} 
 	}
 }

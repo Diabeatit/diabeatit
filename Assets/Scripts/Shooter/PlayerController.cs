@@ -61,13 +61,13 @@ public class PlayerController : MonoBehaviour {
     // set the GO active field to false
     void OnTriggerEnter2D(Collider2D other) {
 
- 
+
 
        // increment the count the destroy the food Object
        if (other.gameObject.CompareTag("Food")){
             other.gameObject.SetActive(false);
             Destroy(other.gameObject);
-			incCount();
+			decCount();
         }
 
         //decriment the count if collide with candy
@@ -84,8 +84,8 @@ public class PlayerController : MonoBehaviour {
 		countText.text = "count: " + getCount();
     }
 
-	public void incCount(){
-		count++;
+	public static void incCount(){
+		count ++;
 	}
 	public static void decCount(){
 		count--;
