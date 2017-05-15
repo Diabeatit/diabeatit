@@ -1,23 +1,35 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
-    public bool characterInQuicksand;
+    //public bool characterInQuicksand;
+
+    private Rigidbody2D rb2d;
+    private static int count;
+
+	public Text countText;
 	public GameObject laser; // this is the players laser prefab
 	public GameObject laserPosition;
 	public float speed;
-    private Rigidbody2D rb2d;
+
 	// Use this for initialization
+
 	void Start () {
         rb2d = GetComponent<Rigidbody2D>();
+
+        // intitialize the count to zero
+        count = 0;
+        SetCountText();
 
 	}
 
 	// Update is called just before applying any physics calculations
 
 	void Update(){
+		SetCountText ();
 		// fire bullet when space bar is pressed
 		if (Input.GetKeyDown ("space")) {
 
@@ -48,13 +60,33 @@ public class PlayerController : MonoBehaviour {
     // So if the game object collided with has a tag of "Food" then we will
     // set the GO active field to false
     void OnTriggerEnter2D(Collider2D other) {
+
        //characterInQuicksand = true;
+
+       // increment the count the destroy the food Object
        if (other.gameObject.CompareTag("Food")){
             other.gameObject.SetActive(false);
             Destroy(other.gameObject);
+			incCount();
+            SetCountText();
         }
     }
 
+    public void SetCountText(){
+
+		countText.text = "count: " + getCount();
+    }
+
+	public void incCount(){
+		count++;
+	}
+	public static void decCount(){
+		count--;
+	}
+
+	public static string getCount(){
+		return count.ToString();
+	}
 
 
 }
