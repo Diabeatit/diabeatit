@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour {
 	void Update(){
 		SetCountText ();
 		// fire bullet when space bar is pressed
-		if (Input.GetKeyDown ("space")) {
+		if (Input.GetKeyDown ("space") || CrossPlatformInputManager.GetButton ("Shoot")) {
 
 			//instantiate the laser
 			GameObject laser1 = (GameObject)Instantiate (laser);
@@ -55,16 +55,6 @@ public class PlayerController : MonoBehaviour {
 		// Control player movement though joystick object
 		Vector2 moveVec = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal"), CrossPlatformInputManager.GetAxis("Vertical"));
 		rb2d.AddForce(moveVec*speed);
-		bool shoot = CrossPlatformInputManager.GetButton ("Shoot");
-		if (shoot) {
-			Debug.Log (shoot);
-
-			//instantiate the laser
-			GameObject laser1 = (GameObject)Instantiate (laser);
-			// set the lasers initial position
-			laser1.transform.position = laserPosition.transform.position;
-		}
-
 	}
 
     // set the boolean variable to true whenever we touch another object
