@@ -36,4 +36,25 @@ public class foodGo : MonoBehaviour {
         }
 
 	}
+
+	void OnTriggerEnter2D(Collider2D other) {
+
+
+
+		// Detect collision with bullet
+		if (other.gameObject.CompareTag("Laser") && this.gameObject.CompareTag("Candy")){
+
+			Destroy(other.gameObject);
+			Destroy(gameObject);
+
+		}
+		if (other.gameObject.CompareTag("Laser") && this.gameObject.CompareTag("Food")){
+
+			Destroy(other.gameObject);
+			Destroy(gameObject);
+			PlayerController.decCount ();
+
+		}
+
+	}
 }

@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour {
     // set the GO active field to false
     void OnTriggerEnter2D(Collider2D other) {
 
-       //characterInQuicksand = true;
+ 
 
        // increment the count the destroy the food Object
        if (other.gameObject.CompareTag("Food")){
