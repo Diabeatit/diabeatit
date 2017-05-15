@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerController : MonoBehaviour {
 
@@ -50,6 +51,19 @@ public class PlayerController : MonoBehaviour {
         float moveVertical = Input.GetAxis ("Vertical");
         Vector2 movement = new Vector2(moveHorizontal,moveVertical);
         rb2d.AddForce(movement*speed);
+
+		// Control player movement though joystick object
+		Vector2 moveVec = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal"), CrossPlatformInputManager.GetAxis("Vertical"));
+		rb2d.AddForce(moveVec*speed);
+		bool shoot = CrossPlatformInputManager.GetButton ("Shoot");
+		if (shoot) {
+			Debug.Log (shoot);
+
+			//instantiate the laser
+			GameObject laser1 = (GameObject)Instantiate (laser);
+			// set the lasers initial position
+			laser1.transform.position = laserPosition.transform.position;
+		}
 
 	}
 
