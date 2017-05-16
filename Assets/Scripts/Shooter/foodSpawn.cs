@@ -8,11 +8,11 @@ public class foodSpawn : MonoBehaviour {
 	public GameObject candyGO;
 
     // spawn rate in seconds
-    float maxSpawnRate;
+	float maxSpawnRate = 10f;
 	// Use this for initialization
 	void Start () {
 
-        maxSpawnRate = 10f;
+
 
 		// when game starts a food and candy object will be
 		// instantiated after 20 seconds
