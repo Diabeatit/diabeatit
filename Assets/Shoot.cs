@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Shoot : MonoBehaviour {
 	public GameObject ball; //reference to the ball prefab, set in editor
-	private Vector3 throwSpeed = new Vector3(0, 26, 40); //This value is a sure basket, we'll modify this using the forcemeter
+	private Vector3 throwSpeed = new Vector3(0, 5, 10); //This value is a sure basket, we'll modify this using the forcemeter
 	public Vector3 ballPos; //starting ball position
 	private bool thrown = false; //if ball has been thrown, prevents 2 or more balls
 	private GameObject ballClone; //we don't use the original prefab
@@ -16,7 +16,7 @@ public class Shoot : MonoBehaviour {
 
 	public GameObject meter; //references to the force meter
 	public GameObject arrow;
-	private float arrowSpeed = 0.3f; //Difficulty, higher value = faster arrow movement
+	private float arrowSpeed = 0.01f; //Difficulty, higher value = faster arrow movement
 	private bool right = true; //used to revers arrow movement
 
 	public Text gameOver; //game over text
