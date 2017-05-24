@@ -11,8 +11,8 @@ public class NewBehaviourScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Vector3 pos = this.GetComponent<Camera> ().ScreenToWorldPoint (Input.mousePosition);
-		float xPos = pos.x;
-		float yPos = pos.y;
+//		Vector3 pos = this.GetComponent<Camera> ().ScreenToWorldPoint (Input.mousePosition);
+//		float xPos = pos.x;
+//		float yPos = pos.y;
 	}
 }

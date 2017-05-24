@@ -9,7 +9,7 @@ public class Goal : MonoBehaviour {
 
 	void OnCollisionEnter() //if ball hits board
 	{
-		GetComponent<AudioSource>().Play(); //plays the hit board sound
+//		GetComponent<AudioSource>().Play(); //plays the hit board sound
 	}
 
 	void OnTriggerEnter() //if ball hits basket collider
