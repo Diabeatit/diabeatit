@@ -5,30 +5,35 @@ using UnityEngine.UI;
 
 public class quickDialogue : MonoBehaviour {
 
-	public GameObject target;
-	public Text bubble;
-	public string txt;
-	public bool display;
+	public static GameObject target;
+	public static Text bubble;
+//	public GameObject banana, cake, sweetPotato, broc;
+
+//	List<GameObject> foodDict;
+	private string txt;
+	public static bool display;
 
 	// Initialize dialogue count and first message
 	void Start () {
-		if (display) {
-			bubble.text = txt;
-		} else {
-			target.SetActive (false);
-			bubble.text = txt;
-		}
+		txt = "Help me decide what I should eat!";
+		display = true;
+
+//		foodDict = new List<GameObject> ();
+//		foodDict.Add (banana);
+//		foodDict.Add (cake);
+//		foodDict.Add (sweetPotato);
+//		foodDict.Add (broc);
+//
+		bubble.text = txt;
 	}
 
 	// Display message based on dialogue
 	void Update () {
 		if (Input.GetMouseButtonDown (0)) {
-			if (!display) {
-				target.SetActive (true);
-				display = true;
-			} else {
+			if (display) {
 				target.SetActive (false);
-			}
+				display = false;
+			} 
 		}
 
 	}
