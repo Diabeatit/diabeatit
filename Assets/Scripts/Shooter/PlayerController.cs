@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour {
 
 		countText.text = "count: " + getCount();
 
-		if (count >= 10) {
+		if (count >= 50) {
 			winText.text = "YOU WIN!!!";
 		}
     }
