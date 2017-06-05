@@ -12,8 +12,11 @@ public class PlayerController : MonoBehaviour {
     private static int count;
 
 	public Text countText;
+	public Text winText;
+
 	public GameObject laser; // this is the players laser prefab
 	public GameObject laserPosition;
+
 	public float speed;
 
 	// Use this for initialization
@@ -24,12 +27,15 @@ public class PlayerController : MonoBehaviour {
         // intitialize the count to zero
         count = 0;
         SetCountText();
+		winText.text = "";
 
 	}
 
 	// Update is called just before applying any physics calculations
 
 	void Update(){
+
+
 		SetCountText ();
 		// fire bullet when space bar is pressed
 		if (Input.GetKeyDown ("space") || CrossPlatformInputManager.GetButton ("Shoot")) {
@@ -86,6 +92,10 @@ public class PlayerController : MonoBehaviour {
     public void SetCountText(){
 
 		countText.text = "count: " + getCount();
+
+		if (count >= 10) {
+			winText.text = "YOU WIN!!!";
+		}
     }
 
 	public static void incCount(){
