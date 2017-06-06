@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets.CrossPlatformInput;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
@@ -10,9 +11,12 @@ public class PlayerController : MonoBehaviour {
 
     private Rigidbody2D rb2d;
     private static int count;
+	private float time = 3f;
 
 	public Text countText;
 	public Text winText;
+
+	public Scene levelToLoad;
 
 	public GameObject laser; // this is the players laser prefab
 	public GameObject laserPosition;
@@ -93,10 +97,19 @@ public class PlayerController : MonoBehaviour {
 
 		countText.text = "count: " + getCount();
 
-		if (count >= 50) {
+		if (count >= 10) {
 			winText.text = "YOU WIN!!!";
+			if(time > 0){
+				time-=Time.deltaTime;
+			}else{
+				SceneManager.LoadScene ("home");
+			}
+
+
 		}
     }
+
+
 
 	public static void incCount(){
 		count ++;
