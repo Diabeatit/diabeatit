@@ -12,9 +12,8 @@ public class Goal : MonoBehaviour {
 //		GetComponent<AudioSource>().Play(); //plays the hit board sound
 	}
 
-	void OnTriggerEnter() //if ball hits basket collider
-	{
-		int currentScore = int.Parse(score.text) + 1; //add 1 to the score
+	void OnTriggerEnter() {
+		float currentScore = float.Parse(score.text) + 0.5f; //add 1 to the score
 		score.text = currentScore.ToString();
 //		AudioSource.PlayClipAtPoint(basket, transform.position); //play basket sound
 	}
