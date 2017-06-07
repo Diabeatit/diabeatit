@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class QuestionManager : MonoBehaviour {
 
+	public static bool nextQ = true;
+	public static bool gameOver = false;
+
 	public GameObject textBox;
 	public TextAsset textFile;
 	public Text theText;
@@ -26,5 +29,10 @@ public class QuestionManager : MonoBehaviour {
 
 	void Update () {
 		theText.text = questions [currentQuestion];
+
+		if (Input.GetKeyDown(KeyCode.Return)) {
+			currentQuestion += 1;
+			nextQ = true;
+		}
 	}
 }

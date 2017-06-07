@@ -12,7 +12,5 @@ public class TextImporter : MonoBehaviour {
 		if (textFile != null) {
 			questions = (textFile.text.Split ('\n'));
 		}
-	}
-	
-
+	}	
 }

@@ -6,6 +6,10 @@ public class GameController : MonoBehaviour {
 
 	public Camera cam;
 	public GameObject cloud;
+	public GameObject cloud2;
+	public GameObject m1;
+	public GameObject m2;
+
 	private float maxWidth;
 
 	// Use this for initialization
@@ -15,20 +19,37 @@ public class GameController : MonoBehaviour {
 		}
 
 		Vector3 upperCorner = new Vector3 (Screen.width, Screen.height, 0.0f);
-		Vector3 targetWidth = cam.ScreenToWorldPoint (upperCorner);
+		//Vector3 targetWidth = cam.ScreenToWorldPoint (upperCorner);
+		float height = 2f * cam.orthographicSize;
+		float targetWidth = height * cam.aspect;
 		float cloudWidth = cloud.GetComponent<Renderer> ().bounds.extents.x;
-		maxWidth = targetWidth.x - cloudWidth;
-		StartCoroutine (Spawn());
+		maxWidth = targetWidth - cloudWidth;
 	}
-	
-	IEnumerator Spawn() {
-		yield return new WaitForSeconds (2.0f);
-		while (true) {
-			Vector3 spawnPosition = new Vector3 (Random.Range (-maxWidth, maxWidth),
-				                        transform.position.y, 0.0f);
-			Quaternion spawnRotation = Quaternion.identity;
-			Instantiate (cloud, spawnPosition, spawnRotation);
-			yield return new WaitForSeconds (Random.Range(1.0f, 2.0f));
+
+	void Update() {
+		if (QuestionManager.gameOver != true) {
+			if (QuestionManager.nextQ == true) {
+				if (m1 != null) {
+					Destroy (m1);
+					Destroy (m2);
+				}
+				Spawn ();
+				QuestionManager.nextQ = false;
+			}
 		}
 	}
+
+	void Spawn() {
+		Vector3 spawnPosition = new Vector3 (Random.Range (-maxWidth, maxWidth),
+			transform.position.y, 0.0f);
+
+		Quaternion spawnRotation = Quaternion.identity;
+		Vector3 spawnPosition1 = new Vector3 (Random.Range (-maxWidth, maxWidth),
+			transform.position.y, 0.0f);
+
+		Quaternion spawnRotation1 = Quaternion.identity;
+		m1 = Instantiate (cloud, spawnPosition, spawnRotation);
+		m2 = Instantiate (cloud2, spawnPosition1, spawnRotation1);
+	}
+
 }
