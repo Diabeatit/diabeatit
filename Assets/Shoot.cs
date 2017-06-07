@@ -16,7 +16,7 @@ public class Shoot : MonoBehaviour {
 
 	public GameObject meter; //references to the force meter
 	public GameObject arrow;
-	private float arrowSpeed = 0.01f; //Difficulty, higher value = faster arrow movement
+	private float arrowSpeed = 0.15f; //Difficulty, higher value = faster arrow movement
 	private bool right = true; //used to revers arrow movement
 
 	public Text gameOver; //game over text
@@ -33,9 +33,51 @@ public class Shoot : MonoBehaviour {
 		
 	}
 
-	void FixedUpdate()
-	{
-//		int elapse = 0;
+//	void DelayedDestroy(int delay, GameObject obj) {
+//		WaitForSecondsRealtime (delay);
+//		Destroy (obj);
+//	}
+
+	void DeleteBall() {
+		/* Remove Ball when it hits the floor */
+
+		if (ballClone != null && thrown) {// || elapse > 50)
+			Rigidbody rb = ballClone.GetComponent<Rigidbody> ();
+			if (ballClone.transform.position.y < -2 || (rb.velocity.z < 0 && !rb.velocity.z.Equals(0))) {
+				Destroy (ballClone);
+				ball.SetActive (true);
+				thrown = false;
+				throwSpeed = new Vector3 (0, 10, 7);//Reset perfect shot variable
+
+				/* Check if out of shots */
+				if (availableShots == 0) {
+					arrow.SetActive (false);
+					gameOver.gameObject.SetActive (true); 
+					Invoke ("restart", 2);
+				}
+			}
+		}
+	}
+
+	void TakeShot() {
+		/* Shoot ball on Tap */
+
+		if (Input.GetButton("Fire1") && !thrown && availableShots > 0)
+		{
+			thrown = true;
+			availableShots--;
+			availableShotsGO.text = availableShots.ToString();
+
+			ballClone = Instantiate(ball, ballPos, transform.rotation) as GameObject;
+			throwSpeed.y = throwSpeed.y + arrow.transform.position.x;
+			throwSpeed.z = throwSpeed.z + arrow.transform.position.x;
+			ball.SetActive (false);
+
+			ballClone.GetComponent<Rigidbody>().AddForce(throwSpeed, ForceMode.Impulse);
+		}
+	}
+
+	void FixedUpdate() {
 
 		/* Move Meter Arrow */
 
@@ -51,52 +93,14 @@ public class Shoot : MonoBehaviour {
 		{
 			arrow.transform.position -= new Vector3(arrowSpeed, 0, 0);
 		}
-		if ( arrow.transform.position.x <= -2.5f)
+		if (arrow.transform.position.x <= -2.5f)
 		{
 			right = true;
 		}
 
-		/* Shoot ball on Tap */
+		TakeShot ();
 
-		if (Input.GetButton("Fire1") && !thrown && availableShots > 0)
-		{
-			thrown = true;
-			availableShots--;
-			availableShotsGO.text = availableShots.ToString();
-
-			ballClone = Instantiate(ball, ballPos, transform.rotation) as GameObject;
-			throwSpeed.y = throwSpeed.y + arrow.transform.position.x;
-			throwSpeed.z = throwSpeed.z + arrow.transform.position.x;
-			ball.SetActive (false);
-
-//			elapse = System.DateTime.Now.Second;
-			ballClone.GetComponent<Rigidbody>().AddForce(throwSpeed, ForceMode.Impulse);
-//			GetComponent<AudioSource>().Play(); //play shoot sound
-		}
-
-//		if (thrown) {
-//			elapse = System.DateTime.Now.Second - elapse;
-//		}
-
-		/* Remove Ball when it hits the floor */
-
-		if (ballClone != null && ballClone.transform.position.y < -2)// || elapse > 50)
-		{
-			Destroy(ballClone);
-			ball.SetActive (true);
-			thrown = false;
-			throwSpeed = new Vector3(0, 15, 5);//Reset perfect shot variable
-//			elapse = 0;
-
-			/* Check if out of shots */
-			if (availableShots == 0)
-			{
-				arrow.SetActive(false);
-//				Instantiate(gameOver, new Vector3(0.31f, 0.2f, 0), transform.rotation);
-				gameOver.gameObject.SetActive(true); 
-				Invoke("restart", 2);
-			}
-		}
+		DeleteBall ();
 	}
 
 	void restart()

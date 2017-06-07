@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class textFade : MonoBehaviour {
 
-	public float time = 4f; //Seconds to read the text
 
 	void Start ()
 	{     
-		Destroy(gameObject, time);
+		Destroy(gameObject, 4.75f);
 	}
 	
 
