@@ -5,6 +5,7 @@ using UnityEngine;
 public class DestroyOnContact : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other) {
-		Destroy (other.gameObject);
+		QuestionManager.currentQuestion += 1;
+		QuestionManager.nextQ = true;
 	}
 }
