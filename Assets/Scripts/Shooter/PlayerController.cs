@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour {
 
 		SetCountText ();
 		// fire bullet when space bar is pressed
-		if (Input.GetKeyDown ("space") || CrossPlatformInputManager.GetButton ("Shoot")) {
+		if (Input.GetKeyDown ("space")/* || CrossPlatformInputManager.GetButton ("Shoot")*/) {
 
 			//instantiate the laser
 			GameObject laser1 = (GameObject)Instantiate (laser);
