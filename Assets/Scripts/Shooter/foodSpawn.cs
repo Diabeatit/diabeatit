@@ -39,7 +39,7 @@ public class foodSpawn : MonoBehaviour {
 
         // generate a food object at a random posistion on the far right of the
         // the screen
-        candy.transform.position = new Vector2(max.x,Random.Range(min.y,max.y));
+        candy.transform.position = new Vector2(max.x,Random.Range(min.y+.5f,max.y -.5f));
 
         //Schedule the next foodObject Spawning
         ScheduleCandy();

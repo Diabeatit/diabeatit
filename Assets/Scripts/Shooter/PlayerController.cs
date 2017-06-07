@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets.CrossPlatformInput;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
@@ -10,10 +11,16 @@ public class PlayerController : MonoBehaviour {
 
     private Rigidbody2D rb2d;
     private static int count;
+	private float time = 3f;
 
 	public Text countText;
+	public Text winText;
+
+	public Scene levelToLoad;
+
 	public GameObject laser; // this is the players laser prefab
 	public GameObject laserPosition;
+
 	public float speed;
 
 	// Use this for initialization
@@ -24,12 +31,15 @@ public class PlayerController : MonoBehaviour {
         // intitialize the count to zero
         count = 0;
         SetCountText();
+		winText.text = "";
 
 	}
 
 	// Update is called just before applying any physics calculations
 
 	void Update(){
+
+
 		SetCountText ();
 		// fire bullet when space bar is pressed
 		if (Input.GetKeyDown ("space") || CrossPlatformInputManager.GetButton ("Shoot")) {
@@ -86,7 +96,20 @@ public class PlayerController : MonoBehaviour {
     public void SetCountText(){
 
 		countText.text = "count: " + getCount();
+
+		if (count >= 10) {
+			winText.text = "YOU WIN!!!";
+			if(time > 0){
+				time-=Time.deltaTime;
+			}else{
+				SceneManager.LoadScene ("home");
+			}
+
+
+		}
     }
+
+
 
 	public static void incCount(){
 		count ++;
