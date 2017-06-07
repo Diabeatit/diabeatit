@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	// Update is called just before applying any physics calculations
-
+	 
 	void Update(){
 		SetCountText ();
 		// fire bullet when space bar is pressed
