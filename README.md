@@ -5,6 +5,9 @@ An application aimed at increasing diabetes awareness for children to teenagers.
 ### Tech Team Members
 Chandler Blaid Burgess, Tyler Cuddy, Jeanette Phung, Gokul Suresh, Tyler Bakke	</br>
 
+## GUI Use
+Highly recommended to use a GUI to ease team work such as GitKraken or GithubDesktop 
+
 ## Getting Started
 
 Clone the repository
@@ -45,7 +48,12 @@ Push changes from your local repository to github repository
 git push origin branch_name
 ```
 
-Submit a pull request from your branch to the dev branch. One of the core tech team members will review your changes and accept your pull request once satisfactory.
+When ready to merge with the development branch, update your branch to match dev
+```
+git merge dev
+```
+
+Then you can submit a pull request from your branch to the dev branch. One of the core tech team members will review your changes and accept your pull request once satisfactory.
 
 That's all!
 
