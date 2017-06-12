@@ -14,14 +14,5 @@ public class clickTrue : MonoBehaviour {
 		QuestionManager.currentQuestion += 1;
 		QuestionManager.nextQ = true;
 	}
-
-	// Use this for initialization
-	void Start () {
 		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

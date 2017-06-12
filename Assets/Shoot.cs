@@ -12,7 +12,7 @@ public class Shoot : MonoBehaviour {
 	private GameObject ballClone; //we don't use the original prefab
 
 	public Text availableShotsGO; //ScoreText game object reference
-	private int availableShots = 10;
+	private int availableShots = 2;
 
 	public GameObject meter; //references to the force meter
 	public GameObject arrow;
@@ -43,7 +43,7 @@ public class Shoot : MonoBehaviour {
 
 		if (ballClone != null && thrown) {// || elapse > 50)
 			Rigidbody rb = ballClone.GetComponent<Rigidbody> ();
-			if (ballClone.transform.position.y < -2 || (rb.velocity.z < 0 && !rb.velocity.z.Equals(0))) {
+			if (ballClone.transform.position.y < -3 || rb.velocity.z < 0) {
 				Destroy (ballClone);
 				ball.SetActive (true);
 				thrown = false;
@@ -105,7 +105,7 @@ public class Shoot : MonoBehaviour {
 
 	void restart()
 	{
-		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+		SceneManager.LoadScene("home");
 	}
 
 }
