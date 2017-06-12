@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class QuestionManager : MonoBehaviour {
 
@@ -24,8 +25,8 @@ public class QuestionManager : MonoBehaviour {
 	void Start () {
 		if (textFile != null) {
 			questions = (textFile.text.Split ('\n'));
-			trueResults = new bool[] {true, false, false, true, false, false};
-			falseResults = new bool[] {false, true, true, false, true, true};
+			trueResults = new bool[] {false, true, false, true, false, false};
+			falseResults = new bool[] {true, false, true, false, true, true};
 		}
 
 		if (endQuestion == 0) {
@@ -34,6 +35,9 @@ public class QuestionManager : MonoBehaviour {
 	}	
 
 	void Update () {
+		if (currentQuestion == 6) {
+			SceneManager.LoadScene ("ending");
+		}
 		theText.text = questions [currentQuestion];
 		scores.text = "Score: " + score;
 		clickTrue.correctTrue = trueResults [currentQuestion];
