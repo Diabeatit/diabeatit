@@ -1,6 +1,6 @@
 # Diabeatit
 ENG 100L Spring 2017 </br>
-![Alt text](/Screenshots/ending.png?raw=true "Ending")
+
 ### Description
 An application aimed at increasing diabetes awareness for children to teenagers. Our Unity Project is aimed at engaging children in waiting room with fun games that also inform them about healthy lifesyle choices that can help them avoid diabetes.
 ### Tech Team Members
@@ -57,6 +57,13 @@ git merge dev
 Then you can submit a pull request from your branch to the dev branch. One of the core tech team members will review your changes and accept your pull request once satisfactory.
 
 That's all!
+
+### Screenshots
+![Alt text](/Screenshots/intro.png?raw=true "Intro")
+![Alt text](/Screenshots/spacegame.png?raw=true "Space")
+![Alt text](/Screenshots/soccer.png?raw=true "Soccer")
+![Alt text](/Screenshots/knowledge.png?raw=true "Knowledge")
+![Alt text](/Screenshots/ending.png?raw=true "Ending")
 
 ## Built With
 * [Unity](https://docs.unity3d.com/Manual/index.html) - Game Engine
