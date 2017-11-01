@@ -57,14 +57,15 @@ public class PlayerController : MonoBehaviour {
 		// fire bullets when the spacebar is pressed
         // Grabs input from the player through the keyboard
         // and stores in a float
-        float moveHorizontal = Input.GetAxis ("Horizontal");
         float moveVertical = Input.GetAxis ("Vertical");
-        Vector2 movement = new Vector2(moveHorizontal,moveVertical);
-        rb2d.AddForce(movement*speed);
-
+        Vector2 movement = new Vector2(0,moveVertical);
+		rb2d.velocity = speed * movement;
+	
+		/*
 		// Control player movement though joystick object
 		Vector2 moveVec = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal"), CrossPlatformInputManager.GetAxis("Vertical"));
 		rb2d.AddForce(moveVec*speed);
+		*/
 	}
 
     // set the boolean variable to true whenever we touch another object
