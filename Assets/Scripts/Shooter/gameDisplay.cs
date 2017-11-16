@@ -41,8 +41,8 @@ public class gameDisplay : MonoBehaviour {
 		}
 	}
 
-	public void updateDisplay(gameObject.tag item){
-	
+	public void updateDisplay(string food){
+		
 	}
 
 	public static void incCount(){

@@ -36,17 +36,18 @@ public class foodGo : MonoBehaviour {
             Destroy(gameObject);
         }
 
-		if (mouseEntered && Input.GetMouseButtonDown(0)){
-			Destroy(gameObject);
-			gameDisplay.updateDsiplay (this.gameObject.tag);
+		if (mouseEntered && Input.GetMouseButtonDown (0)) {
+			Destroy (gameObject);
+			gameDisplay.updateDisplay(this.gameObject.tag);
 		}
+		
 	}
 
-	function OnMouseEnter(){
+	void OnMouseEnter(){
 		mouseEntered = true;
 	}
 
-	function OnMouseExit(){
+	void OnMouseExit(){
 		mouseEntered = false;
 	}
 }
