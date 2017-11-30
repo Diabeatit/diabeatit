@@ -41,15 +41,12 @@ public class gameDisplay : MonoBehaviour {
 		}
 	}
 
-	public void updateDisplay(string food){
+	public static void updateDisplay(string food){
 		
 	}
 
 	public static void incCount(){
 		count ++;
-	}
-	public static void decCount(){
-		count--;
 	}
 
 	public static string getCount(){
