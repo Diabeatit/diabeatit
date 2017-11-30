@@ -5,11 +5,13 @@ using UnityEngine;
 public class foodGo : MonoBehaviour {
 
     // create speed for food object
+    private float speed;
 
-    float speed;
+	private bool mouseEntered;
+
 	// Use this for initialization
 	void Start () {
-
+		
         speed = 3f; // set speed
 
 	}
@@ -32,34 +34,20 @@ public class foodGo : MonoBehaviour {
 
         if(pos.x<min.x){
             Destroy(gameObject);
-			if(this.gameObject.CompareTag("Food")){
-                PlayerController.incCount();
-            }
-			else if(this.gameObject.CompareTag("Candy")){
-                PlayerController.decCount();
-            }
         }
 
+		if (mouseEntered && Input.GetMouseButtonDown (0)) {
+			Destroy (gameObject);
+			gameDisplay.updateDisplay(this.gameObject.tag);
+		}
+		
 	}
 
-	void OnTriggerEnter2D(Collider2D other) {
+	void OnMouseEnter(){
+		mouseEntered = true;
+	}
 
-
-
-		// Detect collision with bullet
-		if (other.gameObject.CompareTag ("Laser") && this.gameObject.CompareTag ("Candy")) {
-
-			Destroy (other.gameObject);
-			Destroy (gameObject);
-			PlayerController.incCount ();
-
-		} 
-		else if (other.gameObject.CompareTag ("Laser") && this.gameObject.CompareTag ("Food")) {
-
-			Destroy (other.gameObject);
-			Destroy (gameObject);
-			PlayerController.decCount ();
-
-		} 
+	void OnMouseExit(){
+		mouseEntered = false;
 	}
 }
