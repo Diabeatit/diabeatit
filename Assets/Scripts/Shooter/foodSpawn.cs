@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class foodSpawn : MonoBehaviour {
 
-	public GameObject foodGO;
-	public GameObject candyGO;
+	public GameObject apple; //make a public gameobject for every item you want to add
+	public GameObject orange;
+	public GameObject chocolate;
+	public GameObject[] food;
 
     // spawn rate in seconds
 	float maxSpawnRate = 10f;
 	// Use this for initialization
 	void Start () {
 
+		//food = GameObject.FindGameObjectsWithTag ("Food");
 
+		food = new GameObject[2]; //make a an array length is number of items
+		food [0] = apple;
+		food [1] = orange;
+
+		for (int i = 0; i < food.Length; i++) { //only for debug purposes
+			Debug.Log ("Food Object: " + food [i].name);
+		}
 
 		// when game starts a food and candy object will be
 		// instantiated after 20 seconds
@@ -35,7 +45,7 @@ public class foodSpawn : MonoBehaviour {
         Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1,1));
 
         //instantiate GameObject
-        GameObject candy = (GameObject)Instantiate(candyGO);
+		GameObject candy = (GameObject)Instantiate(chocolate);
 
         // generate a food object at a random posistion on the far right of the
         // the screen
@@ -52,15 +62,21 @@ public class foodSpawn : MonoBehaviour {
         //top right Screen pos
         Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1,1));
 
-        //instantiate GameObject
-        GameObject food = (GameObject)Instantiate(foodGO);
+		//int rand = Random.Range (0, (food.Length - 1));
 
-        // generate a food object at a random posistion on the far right of the
-        // the screen
-        food.transform.position = new Vector2(max.x,Random.Range(min.y,max.y));
+		for (int i = 0; i < food.Length; i++) {
 
-        //Schedule the next foodObject Spawning
-        ScheduleFood();
+			//instantiate GameObject
+			GameObject newFood = (GameObject)Instantiate (food [i]);
+
+
+			// generate a food object at a random posistion on the far right of the
+			// the screen
+			newFood.transform.position = new Vector2 (max.x, Random.Range (min.y, max.y));
+
+			//Schedule the next foodObject Spawning
+			ScheduleFood ();
+		}
 
     }
     void ScheduleCandy(){
@@ -78,15 +94,22 @@ public class foodSpawn : MonoBehaviour {
     }
     void ScheduleFood(){
 
-        float spawnRate;
+        float spawnRate = 10f;
 
-        if(maxSpawnRate>1f){
+		//Start Spawning.
+		InvokeRepeating("subSpawn_Object", 0, spawnRate);
+
+		//Start the Spawn speed adjust in 30 seconds.
+		InvokeRepeating("subIncrease_Spawn_Speed", 30, 30);
+
+
+       // if(maxSpawnRate>7f){
             //generate the next spawn
-            spawnRate = Random.Range(1f,maxSpawnRate);
-        }
-        else {
-            spawnRate = 1f;
-        }
+       //     spawnRate = Random.Range(1f,maxSpawnRate);
+       // }
+       // else {
+       //     spawnRate = 7f;
+       // }
         Invoke("spawnFood",spawnRate);
     }
 
