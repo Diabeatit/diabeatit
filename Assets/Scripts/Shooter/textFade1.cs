@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class textFade : MonoBehaviour {
+public class textFade1 : MonoBehaviour {
 
 
 	void Start ()
 	{     
-		Destroy(gameObject, 2.75f);
+		Destroy(gameObject, 1f);
 	}
 	
 
