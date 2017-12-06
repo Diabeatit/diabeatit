@@ -5,7 +5,7 @@ using UnityEngine;
 public class foodSpawn : MonoBehaviour {
 
 	public GameObject apple; //make a public gameobject for every item you want to add
-	public GameObject orange;
+	public GameObject zucchini;
 	public GameObject chocolate;
 	public GameObject[] food;
 
@@ -18,7 +18,7 @@ public class foodSpawn : MonoBehaviour {
 
 		food = new GameObject[2]; //make a an array length is number of items
 		food [0] = apple;
-		food [1] = orange;
+		food [1] = zucchini;
 
 		for (int i = 0; i < food.Length; i++) { //only for debug purposes
 			Debug.Log ("Food Object: " + food [i].name);

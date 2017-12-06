@@ -37,8 +37,10 @@ public class foodGo : MonoBehaviour {
         }
 
 		if (mouseEntered && Input.GetMouseButtonDown (0)) {
-			Destroy (gameObject);
 			gameDisplay.updateDisplay(this.gameObject.tag);
+			print (this.gameObject.tag);
+			this.gameObject.SetActive (false);
+			Destroy (this.gameObject);
 		}
 		
 	}

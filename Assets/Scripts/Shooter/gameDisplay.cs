@@ -24,7 +24,7 @@ public class gameDisplay : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		SetCountText ();
 	}
 
 	public void SetCountText(){
@@ -42,11 +42,13 @@ public class gameDisplay : MonoBehaviour {
 	}
 
 	public static void updateDisplay(string food){
-		
-	}
+		if (food == "Apple") {
+			count += 1;
+		}
 
-	public static void incCount(){
-		count ++;
+		if (food == "Zucchini") {
+			count += 5;
+		}
 	}
 
 	public static string getCount(){
