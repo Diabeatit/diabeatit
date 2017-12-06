@@ -1,10 +1,15 @@
 fileFormatVersion: 2
 guid: 8cca2e1f90de545bd8a68705a91900d2
-timeCreated: 1494799730
+timeCreated: 1512598113
 licenseType: Free
 MonoImporter:
+  externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - apple: {fileID: 1216662769287692, guid: 9b25b3913464e437ab85ec46ab4f6ef5, type: 2}
+  - zucchini: {fileID: 1555913119797542, guid: 19d46ea7e6e9e47fabda853950d35e55, type: 2}
+  - chocolate: {fileID: 1555913119797542, guid: 7cab60e8e69eb42f487c1bdda6b24994,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
