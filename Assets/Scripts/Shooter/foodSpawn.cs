@@ -30,14 +30,13 @@ public class foodSpawn : MonoBehaviour {
         Invoke ("spawnCandy",4);
 		Invoke ("spawnFood2",6);
 
-        // increase Difficulity every 30 seconds
+        // increase Difficulity every 15 seconds
         InvokeRepeating("IncreaseDifficulty",0f,10f);
 	}
 
 	// Update is called once per frame
 	void Update () {
 	}
-
     void spawnCandy() {
 
         //bottom-left screeen pos
@@ -67,7 +66,7 @@ public class foodSpawn : MonoBehaviour {
 
 
 			//instantiate GameObject
-			GameObject newFood = (GameObject)Instantiate (apple);
+			GameObject newFood = (GameObject)Instantiate(apple);
 
 
 			// generate a food object at a random posistion on the far right of the
@@ -90,7 +89,7 @@ public class foodSpawn : MonoBehaviour {
 
 
 		//instantiate GameObject
-		GameObject newFood = (GameObject)Instantiate (zucchini);
+		GameObject newFood = (GameObject)Instantiate(zucchini);
 
 
 		// generate a food object at a random posistion on the far right of the
@@ -106,7 +105,7 @@ public class foodSpawn : MonoBehaviour {
 
         float spawnRate;
 
-        if(maxSpawnRate>1f){
+        if(maxSpawnRate> 1f){
             //generate the next spawn
             spawnRate = Random.Range(1f,maxSpawnRate);
         }
