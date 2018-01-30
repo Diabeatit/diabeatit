@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class foodSpawn : MonoBehaviour {
 
@@ -109,21 +110,23 @@ public class foodSpawn : MonoBehaviour {
             //generate the next spawn
             spawnRate = Random.Range(1f,maxSpawnRate);
         }
-        else {
+       else {
             spawnRate = 1f;
         }
+
         Invoke("spawnCandy",spawnRate);
     }
     void ScheduleFood(){
 
-        float spawnRate = 10f;
+		float spawnRate;
 
-		//Start Spawning.
-		InvokeRepeating("subSpawn_Object", 0, spawnRate);
-
-		//Start the Spawn speed adjust in 30 seconds.
-		InvokeRepeating("subIncrease_Spawn_Speed", 30, 30);
-
+		if(maxSpawnRate> 1f){
+			//generate the next spawn
+			spawnRate = Random.Range(1f,maxSpawnRate);
+		}
+		else {
+			spawnRate = 1f;
+		}
 
        // if(maxSpawnRate>7f){
             //generate the next spawn
@@ -136,15 +139,15 @@ public class foodSpawn : MonoBehaviour {
     }
 	void ScheduleFood2(){
 
-		float spawnRate = 10f;
+		float spawnRate;
 
-		//Start Spawning.
-		InvokeRepeating("subSpawn_Object", 0, spawnRate);
-
-		//Start the Spawn speed adjust in 30 seconds.
-		InvokeRepeating("subIncrease_Spawn_Speed", 30, 30);
-
-
+		if(maxSpawnRate> 1f){
+			//generate the next spawn
+			spawnRate = Random.Range(1f,maxSpawnRate);
+		}
+		else {
+			spawnRate = 1f;
+		}
 		// if(maxSpawnRate>7f){
 		//generate the next spawn
 		//     spawnRate = Random.Range(1f,maxSpawnRate);

@@ -49,6 +49,9 @@ public class gameDisplay : MonoBehaviour {
 		if (food == "Zucchini") {
 			count += 5;
 		}
+		if (food == "Candy") {
+			count -= 1;
+		}
 	}
 
 	public static string getCount(){
