@@ -32,7 +32,7 @@ public class foodSpawn : MonoBehaviour {
 		Invoke ("spawnFood2",6);
 
         // increase Difficulity every 15 seconds
-        InvokeRepeating("IncreaseDifficulty",0f,10f);
+        InvokeRepeating("IncreaseDifficulty",0f,5f);
 	}
 
 	// Update is called once per frame

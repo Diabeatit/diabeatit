@@ -31,7 +31,7 @@ public class gameDisplay : MonoBehaviour {
 
 		countText.text = "count: " + getCount();
 
-		if (count >= 10) {
+		if (count >= 100) {
 			winText.text = "YOU WIN!!!";
 			if(time > 0){
 				time-=Time.deltaTime;
