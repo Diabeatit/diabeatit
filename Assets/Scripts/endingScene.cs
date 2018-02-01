@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class endingScene : MonoBehaviour {
+public class endingScene : MonoBehaviour
+{
 
 	GameObject player;
 	Rigidbody2D rb;
@@ -24,40 +25,42 @@ public class endingScene : MonoBehaviour {
 	public Text dream_text;
 	private int dream_count = 1;
 
-	void Start () {
+	void Start ()
+	{
 		// assign player object
-		player = GameObject.FindGameObjectWithTag("Player");
+		player = GameObject.FindGameObjectWithTag ("Player");
 		// rigidBody component to control velocity of player object
 		rb = player.gameObject.GetComponent<Rigidbody2D> ();
 		// transform component to get position of player object
 		t = this.gameObject.GetComponent<Transform> ();
 
 		// hide other Zach sprite objects
-		speaking.transform.position = new Vector3(1, -0.69f, 2);
-		sleeping.transform.position = new Vector3(1.02f, -0.33f, 2);
+		speaking.transform.position = new Vector3 (1, -0.69f, 2);
+		sleeping.transform.position = new Vector3 (1.02f, -0.33f, 2);
 
 		// flags
 		zachWalk = true;
 		zachSpeak = false;
 
 		// hide dialogue and dream bubble
-		dialogue.SetActive(false);
-		dreamBubble.SetActive(false);
+		dialogue.SetActive (false);
+		dreamBubble.SetActive (false);
 	}
-	
-	void Update () {
+
+	void Update ()
+	{
 		// Zach walks to bed
 		if (transform.position.x < 1) {
 			rb.velocity = new Vector2 (2, 0);
 		} else {
 			zachWalk = false;
 			rb.velocity = new Vector2 (0, 0);
-			t.transform.position = new Vector3(1, -0.69f, 2);
+			t.transform.position = new Vector3 (1, -0.69f, 2);
 		}
 
 		// Zach speaks before sleeping
 		if (!zachWalk && !zachSpeak && !zachSleep) {
-			speaking.transform.position = new Vector3(1, -0.69f, -2);
+			speaking.transform.position = new Vector3 (1, -0.69f, -2);
 			dialogue.SetActive (true);
 			zachSpeak = true;
 			dialogue_text.text = "Thanks for hanging out with me today!";
@@ -74,8 +77,8 @@ public class endingScene : MonoBehaviour {
 				} else {
 					dialogue.SetActive (false);
 					zachSpeak = false;
-					speaking.transform.position = new Vector3(1, -0.69f, 2);
-					sleeping.transform.position = new Vector3(1.02f, -0.33f, -2);
+					speaking.transform.position = new Vector3 (1, -0.69f, 2);
+					sleeping.transform.position = new Vector3 (1.02f, -0.33f, -2);
 					zachSleep = true;
 					dreamBubble.SetActive (true);
 				}
@@ -89,18 +92,19 @@ public class endingScene : MonoBehaviour {
 				if (dream_count == 1) {
 					dream_text.text = "A Global Ties Project";
 				} else if (dream_count == 2) {
-					dream_text.text = "Brought to you by\n Diabeatit Spring 2017";
+					dream_text.text = "Brought to you by\n 2018 Diabeatit";
 				} else if (dream_count == 3) {
-					dream_text.text = "TA\nGabri Di Fiore";
+					dream_text.text = "TA\nManali Kulkarni";
 				} else if (dream_count == 4) {
-					dream_text.text = "Tech Team\n<size=20>Tyler Bakke - Chandler Blaid Burgess\nTyler Cuddy - Jeanette Phung\nGokul Suresh</size>";
+					dream_text.text = "Tech Team\n<size=20>Reem Sheikh - Daniel Kirby\n Tyler Bakke </size>";
 				} else if (dream_count == 5) {
-					dream_text.text = "UX Team\n<size=20>Kelsey Haag - Manali Kulkarni\nCrystal Jiao - Hunter Lai\nLucy Lopez - Anna June Park</size>";
+					dream_text.text = "UX Team\n<size=20>Justin Dang - Crystal Jiao\nAndres Baez </size>";
 				} else {
 					dreamBubble.SetActive (false);
 				}
 				dream_count++;
 			}
+
 		}
 	}
 }
