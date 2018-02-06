@@ -38,17 +38,17 @@ public class dialogue_home_intro : MonoBehaviour {
 	void Update () {
 		if (Input.GetMouseButtonDown (0)) {
 			if (dialogue == 1) {
-				bubble.text = "Click on one of my body parts to learn how Diabetes affects my body.";
+				bubble.text = "After a long day of school, I am really hungry";
 			} else if (dialogue == 2) {
-				bubble.text = "Which is true about the heart and diabetes?";
+				bubble.text = "I also feel pretty weak";
 			} else if (dialogue == 3) {
 				bubble.text = "What should I eat and drink?";
 			} else if (dialogue == 4) {
 				bubble.text = "Juice is good but is there a better option?";
 			} else if (dialogue == 5) {
-				bubble.text = "Today is so beautiful! Let’s do something outside!";
+				bubble.text = "Why dont you help me choose what I eat!";
 			} else if (box.dialogue == 6) {
-				bubble.text = "What's next?";
+				bubble.text = "Click on the refrigerator to start!";
 			} else {
 				target.SetActive (false);
 			}
