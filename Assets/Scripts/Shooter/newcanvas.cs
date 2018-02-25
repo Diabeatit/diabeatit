@@ -8,7 +8,6 @@ public class newcanvas: MonoBehaviour {
 	public void myFunction() {
 		mySecondCanvas.SetActive (true);
 	}
-
 	public void OnClickButton(string choice) {
 		if( choice == "continue") {
 			mySecondCanvas.SetActive(false);
