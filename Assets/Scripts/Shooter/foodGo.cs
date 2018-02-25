@@ -43,12 +43,7 @@ public class foodGo : MonoBehaviour {
 				Destroy (this.gameObject);
 				foodSpawn.foodConsumed++;
 			}
-		} else {
-			// Insert what to do when game is paused here
-
-			// Then call resumeGame() to change paused state
-			//gameDisplay.resumeGame();
-		}
+		} 
 	}
 
 	void OnMouseEnter(){

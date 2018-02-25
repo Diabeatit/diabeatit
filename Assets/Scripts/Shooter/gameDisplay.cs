@@ -20,7 +20,7 @@ public class gameDisplay : MonoBehaviour {
 	private static bool check1 = false;
 	private static bool check2 = false;
 	private static bool check3 = false;
-	
+
 	// Level tracker
 	private static int level = 0;
 
@@ -30,7 +30,6 @@ public class gameDisplay : MonoBehaviour {
 
 	// ??
 	public Scene levelToLoad;
-
 
 	// Use this for initialization
 	void Start () {
@@ -115,12 +114,12 @@ public class gameDisplay : MonoBehaviour {
 		}
 		if (food == "Zucchini") {
 			count += 5;
-			characterHealth.TakeDamage (-2);
+			characterHealth.TakeDamage(-3);
 			Debug.Log ("I took damage");
 		}
 		if (food == "Candy") {
 			count -= 1;
-			characterHealth.TakeDamage (10);
+			characterHealth.TakeDamage(2);
 			Debug.Log ("I took damage");
 		}
 	}
@@ -129,7 +128,7 @@ public class gameDisplay : MonoBehaviour {
 	public static string getCount(){
 		return count.ToString();
 	}
-		
+
 	// Pause game using timeScale, set pause flag to true
 	public static void pauseGame() {
 		Time.timeScale = 0f;
