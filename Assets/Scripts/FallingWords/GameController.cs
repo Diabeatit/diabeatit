@@ -18,7 +18,7 @@ public class GameController : MonoBehaviour {
 			cam = Camera.main;
 		}
 
-		Vector3 upperCorner = new Vector3 (Screen.width, Screen.height, 0.0f);
+		//Vector3 upperCorner = new Vector3 (Screen.width, Screen.height, 0.0f);
 		//Vector3 targetWidth = cam.ScreenToWorldPoint (upperCorner);
 		float height = 2f * cam.orthographicSize;
 		float targetWidth = height * cam.aspect;

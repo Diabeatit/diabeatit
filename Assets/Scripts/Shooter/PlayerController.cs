@@ -39,18 +39,6 @@ public class PlayerController : MonoBehaviour {
 	 
 	void Update(){
 
-
-		SetCountText ();
-		// fire bullet when space bar is pressed
-		if (Input.GetKeyDown ("space")/* || CrossPlatformInputManager.GetButton ("Shoot")*/) {
-
-			//instantiate the laser
-			GameObject laser1 = (GameObject)Instantiate (laser);
-
-			// set the lasers initial position
-			laser1.transform.position = laserPosition.transform.position;
-
-		}
 	}
 	void FixedUpdate () {
 
@@ -93,7 +81,6 @@ public class PlayerController : MonoBehaviour {
 
         }
     }
-
     public void SetCountText(){
 
 		countText.text = "count: " + getCount();

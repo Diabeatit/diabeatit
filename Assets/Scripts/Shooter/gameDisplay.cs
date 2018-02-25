@@ -15,6 +15,7 @@ public class gameDisplay : MonoBehaviour {
 
 	public Scene levelToLoad;
 
+
 	// Use this for initialization
 	void Start () {
 		count = 0;
@@ -44,17 +45,24 @@ public class gameDisplay : MonoBehaviour {
 	public static void updateDisplay(string food){
 		if (food == "Apple") {
 			count += 1;
+			characterHealth.TakeDamage(-5);
+			Debug.Log ("I took damage");
 		}
 
 		if (food == "Zucchini") {
 			count += 5;
+			characterHealth.TakeDamage (-2);
+			Debug.Log ("I took damage");
 		}
 		if (food == "Candy") {
 			count -= 1;
+			characterHealth.TakeDamage (10);
+			Debug.Log ("I took damage");
 		}
 	}
 
 	public static string getCount(){
 		return count.ToString();
 	}
+
 }
