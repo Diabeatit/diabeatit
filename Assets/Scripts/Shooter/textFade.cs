@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class textFade : MonoBehaviour {
 
-
-	void Start ()
-	{     
+	void Start () {     
 		Destroy(gameObject, 2.75f);
 	}
-	
-
 }
