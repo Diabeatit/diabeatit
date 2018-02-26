@@ -13,6 +13,12 @@ public class foodSpawn : MonoBehaviour {
 	public GameObject apple; 
 	public GameObject zucchini;
 	public GameObject chocolate;
+	public GameObject redMeat;
+	public GameObject beans;
+	public GameObject cake;
+	public GameObject juiceBox;
+	public GameObject carrot;
+	public GameObject broc;
 
 	private bool wasPaused =  false;
 
@@ -37,6 +43,7 @@ public class foodSpawn : MonoBehaviour {
 		// instantiated after 20 seconds
         Invoke ("spawnFood",2);
         Invoke ("spawnCandy",4);
+		Invoke ("spawnFood2",6);
 		Invoke ("spawnFood2",6);
 
         // increase Difficulity every 15 seconds
