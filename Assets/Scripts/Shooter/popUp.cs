@@ -40,7 +40,7 @@ public class popUp : MonoBehaviour {
 			break;
 		default:
 			break;
-		} 
+		}
 		transCanvas.GetComponent<Canvas>().enabled = true;
 	}
 
