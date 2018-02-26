@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 8cca2e1f90de545bd8a68705a91900d2
-timeCreated: 1512598113
+timeCreated: 1519647599
 licenseType: Free
 MonoImporter:
   externalObjects: {}
@@ -10,6 +10,12 @@ MonoImporter:
   - zucchini: {fileID: 1555913119797542, guid: 19d46ea7e6e9e47fabda853950d35e55, type: 2}
   - chocolate: {fileID: 1555913119797542, guid: 7cab60e8e69eb42f487c1bdda6b24994,
       type: 2}
+  - redMeat: {fileID: 1549986305658510, guid: 3cfb68b18900741579fe8a223252530b, type: 2}
+  - beans: {fileID: 1549986305658510, guid: e3ec9c3fa19b0410aa1c578bed447dca, type: 2}
+  - cake: {fileID: 1549986305658510, guid: c549b26ac6c1645ba9c0704b54c4fdf7, type: 2}
+  - juiceBox: {fileID: 1549986305658510, guid: 269427aec63a9492582a75fa8015013f, type: 2}
+  - carrot: {fileID: 1216662769287692, guid: 5c23ac7b402b5491bbbe3e57bcc9fa54, type: 2}
+  - broc: {fileID: 1549986305658510, guid: 395f286d67c204d2f9054cdc66c6f65f, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

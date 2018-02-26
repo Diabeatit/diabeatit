@@ -13,13 +13,13 @@ public class gameDisplay : MonoBehaviour {
 	public static int count;
 
 	// Pause flag
-	private static bool paused = false;
+	public static bool paused = false;
 
 	// Checkpoint flags
-	private static bool introCheck = false;
-	private static bool check1 = false;
-	private static bool check2 = false;
-	private static bool check3 = false;
+	public static bool introCheck = false;
+	public static bool check1 = false;
+	public static bool check2 = false;
+	public static bool check3 = false;
 
 	// Level tracker
 	public static int level = 0;
@@ -113,7 +113,7 @@ public class gameDisplay : MonoBehaviour {
 		}
 		if (food == "Zucchini") {
 			count += 5;
-			characterHealth.TakeDamage(0);
+			characterHealth.TakeDamage(-5);
 			Debug.Log ("I took damage");
 		}
 		if (food == "Candy") {
@@ -133,8 +133,13 @@ public class gameDisplay : MonoBehaviour {
 			Debug.Log ("I took damage");
 		}
 		if (food == "broc") {
+<<<<<<< HEAD
 			count += 7;
 			characterHealth.TakeDamage(10f);
+=======
+			count -= 1;
+			characterHealth.TakeDamage(-10f);
+>>>>>>> f4356350d76f671d3d69df12b63450bba788f5fb
 			Debug.Log ("I took damage");
 		}
 		//level 3
