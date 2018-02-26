@@ -74,14 +74,14 @@ public class gameDisplay : MonoBehaviour {
 			// Pause to show intro transition image before gameplay starts
 			gameDisplay.pauseGame ();
 			introCheck = true;
-		} else if ((count >= 0) && (!check1)) {
-			winText.text = "0!";
+		} else if ((count >= 25) && (!check1)) {
+			winText.text = "25!";
 			level = 1;
 			gameDisplay.pauseGame ();
 			winText.text = "";
 			check1 = true;
-		} else if ((count >= 25) && (!check2)) {
-			winText.text = "25!";
+		} else if ((count >= 50) && (!check2)) {
+			winText.text = "50!";
 			level = 2;
 			gameDisplay.pauseGame ();
 			winText.text = "";

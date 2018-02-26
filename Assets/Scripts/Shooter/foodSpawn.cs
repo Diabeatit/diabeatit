@@ -30,6 +30,7 @@ public class foodSpawn : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+			//Time.timeScale = 1;
 			Invoke ("spawnFood", 2);
 			Invoke ("spawnCandy", 4);
 			Invoke ("spawnFood2", 6);
