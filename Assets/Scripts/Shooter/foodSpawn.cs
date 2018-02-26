@@ -20,7 +20,7 @@ public class foodSpawn : MonoBehaviour {
 	public GameObject carrot;
 	public GameObject broc;
 
-	private bool wasPaused =  false;
+	//private bool wasPaused =  false;
 
 	//public GameObject[] food;
 
@@ -52,31 +52,32 @@ public class foodSpawn : MonoBehaviour {
 
 	// Restart spawn process from beginning
 	// Call after pause
-//	public void Restart () {
-//		Invoke ("spawnFood",2);
-//		Invoke ("spawnCandy",4);
-//		Invoke ("spawnFood2",6);
-//
-//		// increase Difficulity every 15 seconds
-//		InvokeRepeating("IncreaseDifficulty",0f,5f);
-//	}
+	public void Restart () {
+		Invoke ("spawnFood",2);
+		Invoke ("spawnCandy",4);
+		Invoke ("spawnFood2",6);
+
+		// increase Difficulity every 15 seconds
+		InvokeRepeating("IncreaseDifficulty",0f,5f);
+	}
 
 	// Update is called once per frame
 	void Update () {
 		// Check for paused state
 		if (!gameDisplay.isPaused ()) {
 			// Insert what to do when game is not paused here
+			/*
 			if (wasPaused) {
-				//Start ();
+				Restart ();
 				wasPaused = false;
 			}
-		} 
-		//else {
+			*/
+		} else {
 			// Insert what to do when game is paused here
-			wasPaused = true;
+			//wasPaused = true;
 			// Then call resumeGame() to change paused state
 			//gameDisplay.resumeGame();
-		//}
+		}
 	}
 
     void spawnCandy() {
@@ -96,8 +97,7 @@ public class foodSpawn : MonoBehaviour {
 
 			//Schedule the next foodObject Spawning
 			ScheduleCandy ();
-		} 
-		else {
+		} else {
 			// Insert what to do when game is paused here
 
 			// Then call resumeGame() to change paused state
@@ -124,8 +124,7 @@ public class foodSpawn : MonoBehaviour {
 
 			//Schedule the next foodObject Spawning
 			ScheduleFood ();
-		} 
-		else {
+		} else {
 			// Insert what to do when game is paused here
 
 			// Then call resumeGame() to change paused state
@@ -152,8 +151,7 @@ public class foodSpawn : MonoBehaviour {
 
 			//Schedule the next foodObject Spawning
 			ScheduleFood2 ();
-		} 
-		else {
+		} else {
 			// Insert what to do when game is paused here
 
 			// Then call resumeGame() to change paused state
@@ -173,8 +171,7 @@ public class foodSpawn : MonoBehaviour {
 			}
 
 			Invoke("spawnCandy",spawnRate);
-		} 
-		else {
+		} else {
 			// Insert what to do when game is paused here
 
 			// Then call resumeGame() to change paused state
@@ -199,8 +196,7 @@ public class foodSpawn : MonoBehaviour {
 			//     spawnRate = 7f;
 			// }
 			Invoke("spawnFood",spawnRate);
-		} 
-		else {
+		} else {
 			// Insert what to do when game is paused here
 
 			// Then call resumeGame() to change paused state
@@ -225,8 +221,7 @@ public class foodSpawn : MonoBehaviour {
 			//		spawnRate = 7f;
 			//}
 			Invoke("spawnFood2",spawnRate);
-		} 
-		else {
+		} else {
 			// Insert what to do when game is paused here
 
 			// Then call resumeGame() to change paused state
@@ -242,8 +237,7 @@ public class foodSpawn : MonoBehaviour {
 				CancelInvoke ("IncreaseDifficulty");
 				maxSpawnRate = 1f;
 			}
-		} 
-		else {
+		} else {
 			// Insert what to do when game is paused here
 
 			// Then call resumeGame() to change paused state

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class popUp : MonoBehaviour {
+	// Attach this to main Canvas
 
 	public GameObject transCanvas;
 	private bool active = false;
@@ -39,7 +40,14 @@ public class popUp : MonoBehaviour {
 			break;
 		default:
 			break;
-		}
+		} 
+		transCanvas = GameObject.Find ("transCanvas");
+		transCanvas.GetComponent<Canvas>().enabled = true;
+		transCanvas = GameObject.Find ("transCanvas1");
+		transCanvas.GetComponent<Canvas>().enabled = true;
+		transCanvas = GameObject.Find ("transCanvas2");
+		transCanvas.GetComponent<Canvas>().enabled = true;
+		transCanvas = GameObject.Find ("transCanvas3");
 		transCanvas.GetComponent<Canvas>().enabled = true;
 	}
 

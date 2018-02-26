@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class gameDisplay : MonoBehaviour {
 
 	// Time variables for creating delays
-	private float time = 3f;
+	//private float time = 3f;
 
 	// Count of food consumed
 	private static int count;
@@ -39,7 +39,7 @@ public class gameDisplay : MonoBehaviour {
 	}
 
 	// Reset static variables when game ends so they work on next load
-	void Reset() {
+	public static void Reset() {
 		count = 0;
 		level = 0;
 		paused = false;
@@ -69,39 +69,38 @@ public class gameDisplay : MonoBehaviour {
 	}
 
 	// Checks current count to check for and handle win/transition condition
-	// TODO update to check status of glucose bar when implemented
 	public void checkProgress() {
 		if ((count == 0) && (!introCheck)){
 			// Pause to show intro transition image before gameplay starts
 			gameDisplay.pauseGame ();
 			introCheck = true;
-		} else if ((count >= 10) && (!check1)) {
-			winText.text = "10!";
+		} else if ((count >= 25) && (!check1)) {
+			winText.text = "25!";
 			level = 1;
 			gameDisplay.pauseGame ();
 			winText.text = "";
 			check1 = true;
-		} else if ((count >= 20) && (!check2)) {
-			winText.text = "20!";
+		} else if ((count >= 50) && (!check2)) {
+			winText.text = "50!";
 			level = 2;
 			gameDisplay.pauseGame ();
 			winText.text = "";
 			check2 = true;
-		} else if ((count >= 30) && (!check3)) {
-			winText.text = "30!";
+		} else if ((count >= 75) && (!check3)) {
+			winText.text = "75!";
 			level = 3;
 			gameDisplay.pauseGame ();
 			winText.text = "";
 			check3 = true;
-		} else if (count >= 40) {
+		} else if ((count >= 100) && (characterHealth.currentHealth > 0)) {
 			winText.text = "YOU WIN!!!";
 			// Delay 3 seconds then load home scene
-			if (time > 0) {
-				time -= Time.deltaTime;
-			} else {
+			//if (time > 0) {
+			//	time -= Time.deltaTime;
+			//} else {
 				Reset ();
 				SceneManager.LoadScene ("home");
-			}
+			//}
 		}
 	}
 
@@ -109,17 +108,17 @@ public class gameDisplay : MonoBehaviour {
 	public static void updateDisplay(string food){
 		if (food == "Apple") {
 			count += 1;
-			characterHealth.TakeDamage(-5);
+			characterHealth.TakeDamage(-1f);
 			Debug.Log ("I took damage");
 		}
 		if (food == "Zucchini") {
 			count += 5;
-			characterHealth.TakeDamage(-3);
+			characterHealth.TakeDamage(0);
 			Debug.Log ("I took damage");
 		}
 		if (food == "Candy") {
 			count -= 1;
-			characterHealth.TakeDamage(2);
+			characterHealth.TakeDamage(3f);
 			Debug.Log ("I took damage");
 		}
 	}
