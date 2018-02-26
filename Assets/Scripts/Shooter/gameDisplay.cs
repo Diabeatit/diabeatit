@@ -123,28 +123,28 @@ public class gameDisplay : MonoBehaviour {
 		}
 		//level 2
 		if (food == "redMeat") {
-			count -= 3;
+			count += 3;
 			characterHealth.TakeDamage(6f);
 			Debug.Log ("I took damage");
 		}
 		if (food == "juiceBox") {
-			count -= 7;
+			count -= 4;
 			characterHealth.TakeDamage(15f);
 			Debug.Log ("I took damage");
 		}
 		if (food == "broc") {
-			count -= 1;
+			count += 7;
 			characterHealth.TakeDamage(10f);
 			Debug.Log ("I took damage");
 		}
 		//level 3
 		if (food == "carrot") {
 			count += 3;
-			characterHealth.TakeDamage(-5f);
+			characterHealth.TakeDamage(5f);
 			Debug.Log ("I took damage");
 		}
 		if (food == "beans") {
-			count += 1;
+			count += 7;
 			characterHealth.TakeDamage(-3f);
 			Debug.Log ("I took damage");
 		}
