@@ -39,7 +39,7 @@ public class characterHealth : MonoBehaviour {
 
 	static void  Die() {
 		currentHealth = 0;
-		//gameDisplay.Reset ();
+		gameDisplay.Reset ();
 		SceneManager.LoadScene ("home");
 		Debug.Log("Dead!");
 	}

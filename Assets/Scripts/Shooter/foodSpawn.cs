@@ -19,7 +19,6 @@ public class foodSpawn : MonoBehaviour {
 	public GameObject juiceBox;
 	public GameObject carrot;
 	public GameObject broc;
-
 	//private bool wasPaused =  false;
 
 	//public GameObject[] food;
@@ -29,39 +28,34 @@ public class foodSpawn : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		//food = GameObject.FindGameObjectsWithTag ("Food");
-
-		/**food = new GameObject[2]; //make a an array length is number of items
-		food [0] = apple;
-		food [1] = zucchini;
-
-		for (int i = 0; i < food.Length; i++) { //only for debug purposes
-			Debug.Log ("Food Object: " + food [i].name);
-		}*/
-
-		// when game starts a food and candy object will be
-		// instantiated after 20 seconds
-        Invoke ("spawnFood",2);
-        Invoke ("spawnCandy",4);
-		Invoke ("spawnFood2",6);
-		Invoke ("spawnFood2",6);
-
-        // increase Difficulity every 15 seconds
-        InvokeRepeating("IncreaseDifficulty",0f,5f);
+			Time.timeScale = 1;
+			Invoke ("spawnFood", 2);
+			Invoke ("spawnCandy", 4);
+			Invoke ("spawnFood2", 6);
+			//lv2
+			Invoke ("spawnFoodl2a", 32);
+			Invoke ("spawnFoodl2b", 34);
+			Invoke ("spawnFoodl2c", 36);
+			Debug.Log ("level 2 baby");
+			//lv3
+			Invoke ("spawnFoodl3a", 62);
+			Invoke ("spawnFoodl3b", 64);
+			Invoke ("spawnFoodl3c", 66);
+			Debug.Log ("level 3 baby");
+			// when game starts a food and candy object will be
+			// instantiated after 2 seconds
+			// increase Difficulity every 15 seconds
+			InvokeRepeating ("IncreaseDifficulty", 0f, 5f);
 	}
 
+		
 	// Restart spawn process from beginning
 	// Call after pause
 	public void Restart () {
-		Invoke ("spawnFood",2);
-		Invoke ("spawnCandy",4);
-		Invoke ("spawnFood2",6);
-
-		// increase Difficulity every 15 seconds
-		InvokeRepeating("IncreaseDifficulty",0f,5f);
 	}
 
 	// Update is called once per frame
+
 	void Update () {
 		// Check for paused state
 		if (!gameDisplay.isPaused ()) {
@@ -159,6 +153,163 @@ public class foodSpawn : MonoBehaviour {
 		}
 	}
 
+	void spawnFoodl2a() {
+		if (!gameDisplay.isPaused ()) {
+			//bottom-left screeen pos
+			Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0,0));
+			//top right Screen pos
+			Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1,1));
+
+			//int rand = Random.Range (0, (food.Length - 1));
+
+			//instantiate GameObject
+			GameObject newFood = (GameObject)Instantiate(redMeat);
+			foodSpawned++;
+
+			// generate a food object at a random posistion on the far right of the
+			// the screen
+			newFood.transform.position = new Vector2 (max.x, Random.Range (min.y, max.y));
+
+			//Schedule the next foodObject Spawning
+			ScheduleFoodl2a();
+		} else {
+			// Insert what to do when game is paused here
+
+			// Then call resumeGame() to change paused state
+			//gameDisplay.resumeGame();
+		}
+	}
+	void spawnFoodl2b() {
+		if (!gameDisplay.isPaused ()) {
+			//bottom-left screeen pos
+			Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0,0));
+			//top right Screen pos
+			Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1,1));
+
+			//int rand = Random.Range (0, (food.Length - 1));
+
+			//instantiate GameObject
+			GameObject newFood = (GameObject)Instantiate(juiceBox);
+			foodSpawned++;
+
+			// generate a food object at a random posistion on the far right of the
+			// the screen
+			newFood.transform.position = new Vector2 (max.x, Random.Range (min.y, max.y));
+
+			//Schedule the next foodObject Spawning
+			ScheduleFoodl2b();
+		} else {
+			// Insert what to do when game is paused here
+
+			// Then call resumeGame() to change paused state
+			//gameDisplay.resumeGame();
+		}
+	}
+	void spawnFoodl2c() {
+		if (!gameDisplay.isPaused ()) {
+			//bottom-left screeen pos
+			Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0,0));
+			//top right Screen pos
+			Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1,1));
+
+			//int rand = Random.Range (0, (food.Length - 1));
+
+			//instantiate GameObject
+			GameObject newFood = (GameObject)Instantiate(broc);
+			foodSpawned++;
+
+			// generate a food object at a random posistion on the far right of the
+			// the screen
+			newFood.transform.position = new Vector2 (max.x, Random.Range (min.y, max.y));
+
+			//Schedule the next foodObject Spawning
+			ScheduleFoodl2c();
+		} else {
+			// Insert what to do when game is paused here
+
+			// Then call resumeGame() to change paused state
+			//gameDisplay.resumeGame();
+		}
+	}
+	void spawnFoodl3a() {
+		if (!gameDisplay.isPaused ()) {
+			//bottom-left screeen pos
+			Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0,0));
+			//top right Screen pos
+			Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1,1));
+
+			//int rand = Random.Range (0, (food.Length - 1));
+
+			//instantiate GameObject
+			GameObject newFood = (GameObject)Instantiate(carrot);
+			foodSpawned++;
+
+			// generate a food object at a random posistion on the far right of the
+			// the screen
+			newFood.transform.position = new Vector2 (max.x, Random.Range (min.y, max.y));
+
+			//Schedule the next foodObject Spawning
+			ScheduleFoodl3a();
+		} else {
+			// Insert what to do when game is paused here
+
+			// Then call resumeGame() to change paused state
+			//gameDisplay.resumeGame();
+		}
+	}
+	void spawnFoodl3b() {
+		if (!gameDisplay.isPaused ()) {
+			//bottom-left screeen pos
+			Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0,0));
+			//top right Screen pos
+			Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1,1));
+
+			//int rand = Random.Range (0, (food.Length - 1));
+
+			//instantiate GameObject
+			GameObject newFood = (GameObject)Instantiate(beans);
+			foodSpawned++;
+
+			// generate a food object at a random posistion on the far right of the
+			// the screen
+			newFood.transform.position = new Vector2 (max.x, Random.Range (min.y, max.y));
+
+			//Schedule the next foodObject Spawning
+			ScheduleFoodl3b();
+		} else {
+			// Insert what to do when game is paused here
+
+			// Then call resumeGame() to change paused state
+			//gameDisplay.resumeGame();
+		}
+	}
+	void spawnFoodl3c() {
+		if (!gameDisplay.isPaused ()) {
+			//bottom-left screeen pos
+			Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0,0));
+			//top right Screen pos
+			Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1,1));
+
+			//int rand = Random.Range (0, (food.Length - 1));
+
+			//instantiate GameObject
+			GameObject newFood = (GameObject)Instantiate(cake);
+			foodSpawned++;
+
+			// generate a food object at a random posistion on the far right of the
+			// the screen
+			newFood.transform.position = new Vector2 (max.x, Random.Range (min.y, max.y));
+
+			//Schedule the next foodObject Spawning
+			ScheduleFoodl3c();
+		} else {
+			// Insert what to do when game is paused here
+
+			// Then call resumeGame() to change paused state
+			//gameDisplay.resumeGame();
+		}
+	}
+
 	void ScheduleCandy(){
 		if (!gameDisplay.isPaused ()) {
 			float spawnRate;
@@ -221,6 +372,152 @@ public class foodSpawn : MonoBehaviour {
 			//		spawnRate = 7f;
 			//}
 			Invoke("spawnFood2",spawnRate);
+		} else {
+			// Insert what to do when game is paused here
+
+			// Then call resumeGame() to change paused state
+			//gameDisplay.resumeGame();
+		}
+	}
+	//level 2
+	void ScheduleFoodl2a(){
+		if (!gameDisplay.isPaused ()) {
+			float spawnRate;
+
+			if(maxSpawnRate> 1f){
+				//generate the next spawn
+				spawnRate = Random.Range(1f,maxSpawnRate);
+			} else {
+				spawnRate = 1f;
+			}
+			//if(maxSpawnRate>7f){
+			//generate the next spawn
+			//		spawnRate = Random.Range(1f,maxSpawnRate);
+			//} else {
+			//		spawnRate = 7f;
+			//}
+			Invoke("spawnFoodl2a",spawnRate);
+		} else {
+			// Insert what to do when game is paused here
+
+			// Then call resumeGame() to change paused state
+			//gameDisplay.resumeGame();
+		}
+	}
+	void ScheduleFoodl2b(){
+		if (!gameDisplay.isPaused ()) {
+			float spawnRate;
+
+			if(maxSpawnRate> 1f){
+				//generate the next spawn
+				spawnRate = Random.Range(1f,maxSpawnRate);
+			} else {
+				spawnRate = 1f;
+			}
+			//if(maxSpawnRate>7f){
+			//generate the next spawn
+			//		spawnRate = Random.Range(1f,maxSpawnRate);
+			//} else {
+			//		spawnRate = 7f;
+			//}
+			Invoke("spawnFoodl2b",spawnRate);
+		} else {
+			// Insert what to do when game is paused here
+
+			// Then call resumeGame() to change paused state
+			//gameDisplay.resumeGame();
+		}
+	}
+	void ScheduleFoodl2c(){
+		if (!gameDisplay.isPaused ()) {
+			float spawnRate;
+
+			if(maxSpawnRate> 1f){
+				//generate the next spawn
+				spawnRate = Random.Range(1f,maxSpawnRate);
+			} else {
+				spawnRate = 1f;
+			}
+			//if(maxSpawnRate>7f){
+			//generate the next spawn
+			//		spawnRate = Random.Range(1f,maxSpawnRate);
+			//} else {
+			//		spawnRate = 7f;
+			//}
+			Invoke("spawnFoodl2c",spawnRate);
+		} else {
+			// Insert what to do when game is paused here
+
+			// Then call resumeGame() to change paused state
+			//gameDisplay.resumeGame();
+		}
+	}
+	//level 3
+	void ScheduleFoodl3a(){
+		if (!gameDisplay.isPaused ()) {
+			float spawnRate;
+
+			if(maxSpawnRate> 1f){
+				//generate the next spawn
+				spawnRate = Random.Range(1f,maxSpawnRate);
+			} else {
+				spawnRate = 1f;
+			}
+			//if(maxSpawnRate>7f){
+			//generate the next spawn
+			//		spawnRate = Random.Range(1f,maxSpawnRate);
+			//} else {
+			//		spawnRate = 7f;
+			//}
+			Invoke("spawnFoodl3a",spawnRate);
+		} else {
+			// Insert what to do when game is paused here
+
+			// Then call resumeGame() to change paused state
+			//gameDisplay.resumeGame();
+		}
+	}
+	void ScheduleFoodl3b(){
+		if (!gameDisplay.isPaused ()) {
+			float spawnRate;
+
+			if(maxSpawnRate> 1f){
+				//generate the next spawn
+				spawnRate = Random.Range(1f,maxSpawnRate);
+			} else {
+				spawnRate = 1f;
+			}
+			//if(maxSpawnRate>7f){
+			//generate the next spawn
+			//		spawnRate = Random.Range(1f,maxSpawnRate);
+			//} else {
+			//		spawnRate = 7f;
+			//}
+			Invoke("spawnFoodl3b",spawnRate);
+		} else {
+			// Insert what to do when game is paused here
+
+			// Then call resumeGame() to change paused state
+			//gameDisplay.resumeGame();
+		}
+	}
+	void ScheduleFoodl3c(){
+		if (!gameDisplay.isPaused ()) {
+			float spawnRate;
+
+			if(maxSpawnRate> 1f){
+				//generate the next spawn
+				spawnRate = Random.Range(1f,maxSpawnRate);
+			} else {
+				spawnRate = 1f;
+			}
+			//if(maxSpawnRate>7f){
+			//generate the next spawn
+			//		spawnRate = Random.Range(1f,maxSpawnRate);
+			//} else {
+			//		spawnRate = 7f;
+			//}
+			Invoke("spawnFoodl3c",spawnRate);
 		} else {
 			// Insert what to do when game is paused here
 

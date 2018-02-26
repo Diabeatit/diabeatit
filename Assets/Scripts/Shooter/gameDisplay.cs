@@ -10,7 +10,7 @@ public class gameDisplay : MonoBehaviour {
 	//private float time = 3f;
 
 	// Count of food consumed
-	private static int count;
+	public static int count;
 
 	// Pause flag
 	private static bool paused = false;
@@ -22,7 +22,7 @@ public class gameDisplay : MonoBehaviour {
 	private static bool check3 = false;
 
 	// Level tracker
-	private static int level = 0;
+	public static int level = 0;
 
 	// Text objects
 	public Text countText;
@@ -74,14 +74,14 @@ public class gameDisplay : MonoBehaviour {
 			// Pause to show intro transition image before gameplay starts
 			gameDisplay.pauseGame ();
 			introCheck = true;
-		} else if ((count >= 25) && (!check1)) {
-			winText.text = "25!";
+		} else if ((count >= 0) && (!check1)) {
+			winText.text = "0!";
 			level = 1;
 			gameDisplay.pauseGame ();
 			winText.text = "";
 			check1 = true;
-		} else if ((count >= 50) && (!check2)) {
-			winText.text = "50!";
+		} else if ((count >= 25) && (!check2)) {
+			winText.text = "25!";
 			level = 2;
 			gameDisplay.pauseGame ();
 			winText.text = "";
@@ -121,6 +121,39 @@ public class gameDisplay : MonoBehaviour {
 			characterHealth.TakeDamage(3f);
 			Debug.Log ("I took damage");
 		}
+		//level 2
+		if (food == "redMeat") {
+			count -= 3;
+			characterHealth.TakeDamage(6f);
+			Debug.Log ("I took damage");
+		}
+		if (food == "juiceBox") {
+			count -= 7;
+			characterHealth.TakeDamage(15f);
+			Debug.Log ("I took damage");
+		}
+		if (food == "broc") {
+			count -= 1;
+			characterHealth.TakeDamage(10f);
+			Debug.Log ("I took damage");
+		}
+		//level 3
+		if (food == "carrot") {
+			count += 3;
+			characterHealth.TakeDamage(-5f);
+			Debug.Log ("I took damage");
+		}
+		if (food == "beans") {
+			count += 1;
+			characterHealth.TakeDamage(-3f);
+			Debug.Log ("I took damage");
+		}
+		if (food == "cake") {
+			count -= 5;
+			characterHealth.TakeDamage(10f);
+			Debug.Log ("I took damage");
+		}
+
 	}
 
 	// Accessor for count

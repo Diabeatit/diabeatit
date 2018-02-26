@@ -41,13 +41,6 @@ public class popUp : MonoBehaviour {
 		default:
 			break;
 		} 
-		transCanvas = GameObject.Find ("transCanvas");
-		transCanvas.GetComponent<Canvas>().enabled = true;
-		transCanvas = GameObject.Find ("transCanvas1");
-		transCanvas.GetComponent<Canvas>().enabled = true;
-		transCanvas = GameObject.Find ("transCanvas2");
-		transCanvas.GetComponent<Canvas>().enabled = true;
-		transCanvas = GameObject.Find ("transCanvas3");
 		transCanvas.GetComponent<Canvas>().enabled = true;
 	}
 
