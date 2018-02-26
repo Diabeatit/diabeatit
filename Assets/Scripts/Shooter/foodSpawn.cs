@@ -19,6 +19,8 @@ public class foodSpawn : MonoBehaviour {
 	public GameObject juiceBox;
 	public GameObject carrot;
 	public GameObject broc;
+
+
 	//private bool wasPaused =  false;
 
 	//public GameObject[] food;
@@ -28,50 +30,67 @@ public class foodSpawn : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-			Time.timeScale = 1;
 			Invoke ("spawnFood", 2);
 			Invoke ("spawnCandy", 4);
 			Invoke ("spawnFood2", 6);
-			//lv2
-			Invoke ("spawnFoodl2a", 32);
-			Invoke ("spawnFoodl2b", 34);
-			Invoke ("spawnFoodl2c", 36);
+		//if ((gameDisplay.count >= 25) && (!gameDisplay.check2)) {
+			Invoke ("spawnFoodl2a", 42);
+			Invoke ("spawnFoodl2b", 44);
+			Invoke ("spawnFoodl2c", 46);
 			Debug.Log ("level 2 baby");
-			//lv3
-			Invoke ("spawnFoodl3a", 62);
-			Invoke ("spawnFoodl3b", 64);
-			Invoke ("spawnFoodl3c", 66);
+		//}
+		//if ((gameDisplay.count >= 75) && (!gameDisplay.check3)) 
+		//{
+			Invoke ("spawnFoodl3a", 82);
+			Invoke ("spawnFoodl3b", 84);
+			Invoke ("spawnFoodl3c", 86);
 			Debug.Log ("level 3 baby");
+		//}
+//			startlevels();
 			// when game starts a food and candy object will be
 			// instantiated after 2 seconds
 			// increase Difficulity every 15 seconds
-			InvokeRepeating ("IncreaseDifficulty", 0f, 5f);
+			InvokeRepeating ("IncreaseDifficulty", 0f, 50f);
 	}
 
 		
 	// Restart spawn process from beginning
 	// Call after pause
-	public void Restart () {
-	}
+//	void startlevels ()
+//	{
+//		if (gameDisplay.level == 2) {  
+//			Invoke ("spawnFoodl2a",2);
+//			Invoke ("spawnFoodl2b",4);
+//			Invoke ("spawnFoodl2c",6);
+//			Debug.Log ("level 2 baby");
+//		} 
+//		if (gameDisplay.level == 3) { 
+//			Invoke ("spawnFoodl3a,2");
+//			Invoke ("spawnFoodl3b",4);
+//			Invoke ("spawnFoodl3c",6);
+//			Debug.Log ("level 3 baby");
+//		}
+//
+//	}
 
 	// Update is called once per frame
 
 	void Update () {
 		// Check for paused state
-		if (!gameDisplay.isPaused ()) {
-			// Insert what to do when game is not paused here
-			/*
-			if (wasPaused) {
-				Restart ();
-				wasPaused = false;
-			}
-			*/
-		} else {
+//		//if (!gameDisplay.isPaused ()) {
+//			// Insert what to do when game is not paused here
+//
+//			if (wasPaused) {
+//				Start ();
+//				wasPaused = false;
+//			}
+//
+//		} else {
 			// Insert what to do when game is paused here
 			//wasPaused = true;
 			// Then call resumeGame() to change paused state
 			//gameDisplay.resumeGame();
-		}
+	
 	}
 
     void spawnCandy() {
