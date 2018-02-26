@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class popUp : MonoBehaviour {
+	// Attach this to main Canvas
 
 	public GameObject transCanvas;
 	private bool active = false;

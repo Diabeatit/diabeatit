@@ -9,32 +9,37 @@ public class characterHealth : MonoBehaviour {
 	public static float maxHealth {get; set;}
 	public static Slider healthbar; 
 
-	void Start()
-	{
+	void Start() {
 		healthbar = GameObject.Find("HealthBar").GetComponent<Slider>();
 		maxHealth = 100f;
 		currentHealth = maxHealth;
-
-	 healthbar.value = CalculateHealth();
+		healthbar.value = CalculateHealth();
 	}
 		
 	void Update() {
-		currentHealth -= (1 * Time.deltaTime); //minus one every second
+		currentHealth -= (1.5f * Time.deltaTime); //minus one every second
 		healthbar.value = CalculateHealth (); //recalculate display
 	}
-	public static void TakeDamage(float amount)
-	{
+
+	public static void TakeDamage(float amount) {
 		currentHealth -= amount;
 		healthbar.value = CalculateHealth ();
-			if (currentHealth <= 0) Die ();
-				
+		if (currentHealth <= 0) {
+			Die ();
+		}
 	}
+
 	static float CalculateHealth() {
-		return currentHealth / maxHealth;
+		if ((currentHealth / maxHealth) > 1f) {
+			return 1f;
+		} else {
+			return currentHealth / maxHealth;
+		}
 	}
-	static void  Die()
-	{
+
+	static void  Die() {
 		currentHealth = 0;
+		gameDisplay.Reset ();
 		SceneManager.LoadScene ("home");
 		Debug.Log("Dead!");
 	}
