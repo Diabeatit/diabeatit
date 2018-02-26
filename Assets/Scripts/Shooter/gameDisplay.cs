@@ -69,7 +69,6 @@ public class gameDisplay : MonoBehaviour {
 	}
 
 	// Checks current count to check for and handle win/transition condition
-	// TODO update to check status of glucose bar when implemented
 	public void checkProgress() {
 		if ((count == 0) && (!introCheck)){
 			// Pause to show intro transition image before gameplay starts
@@ -109,17 +108,17 @@ public class gameDisplay : MonoBehaviour {
 	public static void updateDisplay(string food){
 		if (food == "Apple") {
 			count += 1;
-			characterHealth.TakeDamage(-4.5f);
+			characterHealth.TakeDamage(-1f);
 			Debug.Log ("I took damage");
 		}
 		if (food == "Zucchini") {
-			count += 1;
-			characterHealth.TakeDamage(-1.5f);
+			count += 5;
+			characterHealth.TakeDamage(0);
 			Debug.Log ("I took damage");
 		}
 		if (food == "Candy") {
-			count += 1;
-			characterHealth.TakeDamage(4.5f);
+			count -= 1;
+			characterHealth.TakeDamage(3f);
 			Debug.Log ("I took damage");
 		}
 	}
