@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class gameDisplay : MonoBehaviour {
 
 	// Time variables for creating delays
-	//private float time = 3f;
+	private float time = 3f;
 
 	// Count of food consumed
 	public static int count;
@@ -19,7 +19,6 @@ public class gameDisplay : MonoBehaviour {
 	public static bool introCheck = false;
 	public static bool check1 = false;
 	public static bool check2 = false;
-	public static bool check3 = false;
 
 	// Level tracker
 	public static int level = 0;
@@ -28,13 +27,10 @@ public class gameDisplay : MonoBehaviour {
 	public Text countText;
 	public Text winText;
 
-	// ??
-	public Scene levelToLoad;
-
 	// Use this for initialization
 	void Start () {
 		count = 0;
-		SetCountText();
+		setCountText();
 		winText.text = "";
 	}
 
@@ -46,14 +42,13 @@ public class gameDisplay : MonoBehaviour {
 		introCheck = false;
 		check1 = false;
 		check2 = false;
-		check3 = false;
 	}
 
 	// Update is called once per frame
 	void Update () {
 		// Check for paused state
 		if (!gameDisplay.isPaused()) {
-			SetCountText ();
+			setCountText ();
 			checkProgress ();
 		} else {
 			// Insert what to do when game is paused here
@@ -63,49 +58,46 @@ public class gameDisplay : MonoBehaviour {
 		}
 	}
 
-	// To be called in Update(), sets the count text based on current count
-	public void SetCountText(){
+	// To be called in Update()
+	// Sets the count text based on current count
+	public void setCountText(){
 		countText.text = "count: " + getCount();
 	}
 
+	// To be called in Update()
 	// Checks current count to check for and handle win/transition condition
 	public void checkProgress() {
-		if ((count == 0) && (!introCheck)){
+		if ((count == 0) && (!introCheck)) {
 			// Pause to show intro transition image before gameplay starts
 			gameDisplay.pauseGame ();
 			introCheck = true;
-		} else if ((count >= 25) && (!check1)) {
-			winText.text = "25!";
+		} else if ((count >= 33) && (!check1)) {
 			level = 1;
 			gameDisplay.pauseGame ();
 			winText.text = "";
 			check1 = true;
-		} else if ((count >= 50) && (!check2)) {
-			winText.text = "50!";
+		} else if ((count >= 66) && (!check2)) {
 			level = 2;
 			gameDisplay.pauseGame ();
 			winText.text = "";
 			check2 = true;
-		} else if ((count >= 75) && (!check3)) {
-			winText.text = "75!";
-			level = 3;
-			gameDisplay.pauseGame ();
-			winText.text = "";
-			check3 = true;
 		} else if ((count >= 100) && (characterHealth.currentHealth > 0)) {
 			winText.text = "YOU WIN!!!";
 			// Delay 3 seconds then load home scene
-			//if (time > 0) {
-			//	time -= Time.deltaTime;
-			//} else {
+			if (time > 0) {
+				time -= Time.deltaTime;
+			} else {
 				Reset ();
 				SceneManager.LoadScene ("home");
-			//}
+			}
+		} else {
+
 		}
 	}
 
 	// Update count with appropriate value based on food string parameter
 	public static void updateDisplay(string food){
+		// Level 0
 		if (food == "Apple") {
 			count += 1;
 			characterHealth.TakeDamage(-1f);
@@ -113,7 +105,7 @@ public class gameDisplay : MonoBehaviour {
 		}
 		if (food == "Zucchini") {
 			count += 5;
-			characterHealth.TakeDamage(-5);
+			characterHealth.TakeDamage(-5f);
 			Debug.Log ("I took damage");
 		}
 		if (food == "Candy") {
@@ -121,7 +113,7 @@ public class gameDisplay : MonoBehaviour {
 			characterHealth.TakeDamage(3f);
 			Debug.Log ("I took damage");
 		}
-		//level 2
+		// Level 1
 		if (food == "redMeat") {
 			count += 3;
 			characterHealth.TakeDamage(6f);
@@ -133,16 +125,11 @@ public class gameDisplay : MonoBehaviour {
 			Debug.Log ("I took damage");
 		}
 		if (food == "broc") {
-<<<<<<< HEAD
 			count += 7;
-			characterHealth.TakeDamage(10f);
-=======
-			count -= 1;
 			characterHealth.TakeDamage(-10f);
->>>>>>> f4356350d76f671d3d69df12b63450bba788f5fb
 			Debug.Log ("I took damage");
 		}
-		//level 3
+		// Level 2
 		if (food == "carrot") {
 			count += 3;
 			characterHealth.TakeDamage(5f);
@@ -158,7 +145,6 @@ public class gameDisplay : MonoBehaviour {
 			characterHealth.TakeDamage(10f);
 			Debug.Log ("I took damage");
 		}
-
 	}
 
 	// Accessor for count

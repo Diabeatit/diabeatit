@@ -12,14 +12,13 @@ public class popUp : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		// get references to canvases and deactivate them until needed
-		transCanvas = GameObject.Find ("transCanvas");
+		transCanvas = GameObject.Find ("transCanvas0");
 		transCanvas.GetComponent<Canvas>().enabled = false;
 		transCanvas = GameObject.Find ("transCanvas1");
 		transCanvas.GetComponent<Canvas>().enabled = false;
 		transCanvas = GameObject.Find ("transCanvas2");
 		transCanvas.GetComponent<Canvas>().enabled = false;
-		transCanvas = GameObject.Find ("transCanvas3");
-		transCanvas.GetComponent<Canvas>().enabled = false;
+
 	}
 
 	// Call when paused to change the transition image and activate it
@@ -27,16 +26,13 @@ public class popUp : MonoBehaviour {
 		int level = gameDisplay.getLevel ();
 		switch (level) {
 		case 0:
-			transCanvas = GameObject.Find ("transCanvas");
+			transCanvas = GameObject.Find ("transCanvas0");
 			break;
 		case 1:
 			transCanvas = GameObject.Find("transCanvas1");
 			break;
 		case 2:
 			transCanvas = GameObject.Find("transCanvas2");
-			break;
-		case 3:
-			transCanvas = GameObject.Find("transCanvas3");
 			break;
 		default:
 			break;
