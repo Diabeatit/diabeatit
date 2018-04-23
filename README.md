@@ -1,10 +1,11 @@
 # Diabeatit
-ENG 100L Spring 2017 </br>
+ENG 100L Spring 2018 </br>
 
 ### Description
 An application aimed at increasing diabetes awareness for children to teenagers. Our Unity Project is aimed at engaging children in waiting room with fun games that also inform them about healthy lifesyle choices that can help them avoid diabetes.
 ### Tech Team Members
-Chandler Blaid Burgess, Tyler Cuddy, Jeanette Phung, Gokul Suresh, Tyler Bakke	</br>
+Current: Reem Sheikh, Daniel Kirby, Gokul Suresh, Tyler Bakke
+Past: Chandler Blaid Burgess, Tyler Cuddy, Jeanette Phung	</br>
 
 ## GUI Use
 Highly recommended to use a GUI to ease team work such as GitKraken or GithubDesktop 
@@ -13,7 +14,7 @@ Highly recommended to use a GUI to ease team work such as GitKraken or GithubDes
 
 Clone the repository
 ```
-git clone https://github.com/gsur24/Diabeatit.git
+git clone https://github.com/Diabeatit/diabeatit.git
 ```
 
 Ensure that you are on the dev branch by running
