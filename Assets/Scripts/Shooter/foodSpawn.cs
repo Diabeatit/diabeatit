@@ -74,9 +74,8 @@ public class foodSpawn : MonoBehaviour {
 	}
 
 	// To be called after a pause
-	// Destroys existing food objects and restarts spawns
+	// Restarts food spawning
 	void restart() {
-		destroyFood ();
 		randomSpawn ();
 		InvokeRepeating ("IncreaseDifficulty", 0f, 50f);
 	}
@@ -154,78 +153,6 @@ public class foodSpawn : MonoBehaviour {
 		}
 	}
 
-	/* Spawns a food object based on current level and randomly generated number
-	 * 
-	 * 
-	void randomSpawn() {
-		if (!gameDisplay.isPaused ()) {
-			// Get random float between 0.0 and 1.0
-			float rand = Random.value;
-			// Pick from available foods based on current level and value of rand
-			if (gameDisplay.getLevel () == 0) {
-				if (rand < 0.33f) {
-					spawnFood ("apple");
-				} else if (rand < 0.66f) {
-					spawnFood ("chocolate");
-				} else {
-					spawnFood ("zucchini");
-				}
-			} else if (gameDisplay.getLevel () == 1) {
-				if (rand < 0.33f) {
-					if (rand < 0.165f) {
-						spawnFood ("apple");
-					} else {
-						spawnFood ("redMeat");
-					}
-				} else if (rand < 0.66f) {
-					if (rand < 0.495f) {
-						spawnFood ("chocolate");
-					} else {
-						spawnFood ("juiceBox");
-					}
-				} else {
-					if (rand < 0.83f) {
-						spawnFood ("zucchini");
-					} else {
-						spawnFood ("broc");
-					}
-				}
-			} else if (gameDisplay.getLevel () == 2) {
-				if (rand < 0.33f) {
-					if (rand < 0.11f) {
-						spawnFood ("apple");
-					} else if (rand < 0.22f) {
-						spawnFood ("redMeat");
-					} else {
-						spawnFood ("carrot");
-					}
-				} else if (rand < 0.66f) {
-					if (rand < 0.44f) {
-						spawnFood ("chocolate");
-					} else if (rand < 0.55f) {
-						spawnFood ("juiceBox");
-					} else {
-						spawnFood ("beans");
-					}
-				} else {
-					if (rand < 0.77f) {
-						spawnFood ("zucchini");
-					} else if (rand < 0.88f) {
-						spawnFood ("broc");
-					} else {
-						spawnFood ("cake");
-					}
-				}
-			}
-		} else {
-			// Insert what to do when game is paused here
-
-			// Then call resumeGame() to change paused state
-			//gameDisplay.resumeGame();
-		}
-	}
-	*/
-
 	/*	Increases spawn rate up to the max
 	 * 
 	 * */
@@ -274,17 +201,38 @@ public class foodSpawn : MonoBehaviour {
 	 * */
 	void spawnFood(string foodName) {
 		if (!gameDisplay.isPaused ()) {
-			//bottom-left screeen pos
-			Vector2 min = Camera.main.ViewportToWorldPoint (new Vector2 (0, 0));
-			//top right Screen pos
-			Vector2 max = Camera.main.ViewportToWorldPoint (new Vector2 (1, 1));
-			//instantiate GameObject
-			GameObject newFood = instantiateNewFood(foodName);
-			foodSpawned++;
-			// generate a food object at a random posistion on the far right of the the screen
-			newFood.transform.position = new Vector2 (max.x, Random.Range (min.y + .5f, max.y - .5f));
-			//Schedule the next foodObject Spawning
-			scheduleNext ();
+            //bottom-left screeen pos
+            Vector2 min = Camera.main.ViewportToWorldPoint (new Vector2 (0, 0));
+            //top right Screen pos
+            Vector2 max = Camera.main.ViewportToWorldPoint (new Vector2 (1, 1));
+            //instantiate GameObject
+            GameObject newFood = instantiateNewFood(foodName);
+            /*
+            //generate a y coord and place a test box there to test for collision
+            //recalculate y until no collision
+            bool validPos = false;
+            float y = 0;
+            //GameObject testBox = GameObject.FindGameObjectWithTag("testBox");
+            if (!validPos) {
+            */
+            float y = Random.Range(min.y + .5f, max.y - 1.5f);
+            /*
+                //testBox.transform.position = new Vector2(max.x, y);
+                Collider2D collidesWith = Physics2D.OverlapBox(new Vector2(min.x, y), new Vector2(20f, 20f), 0f);
+                if (!collidesWith) {
+                    Debug.Log("no collision");
+                    validPos = true;
+                } else {
+                    Debug.Log("COLLISION");
+                }
+            }
+            */
+            // generate a food object at a random posistion on the far right of the the screen
+            // with a y coord below the top ui bar
+            newFood.transform.position = new Vector2 (max.x, y);
+            foodSpawned++;
+            //Schedule the next foodObject Spawning
+            scheduleNext();
 		} else {
 			// Insert what to do when game is paused here
 

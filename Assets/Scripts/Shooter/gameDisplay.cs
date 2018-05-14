@@ -61,7 +61,7 @@ public class gameDisplay : MonoBehaviour {
 	// To be called in Update()
 	// Sets the count text based on current count
 	public void setCountText(){
-		countText.text = "count: " + getCount();
+		countText.text = "score: " + getCount();
 	}
 
 	// To be called in Update()
@@ -71,17 +71,17 @@ public class gameDisplay : MonoBehaviour {
 			// Pause to show intro transition image before gameplay starts
 			gameDisplay.pauseGame ();
 			introCheck = true;
-		} else if ((count >= 33) && (!check1)) {
+		} else if ((count >= 50) && (!check1)) {
 			level = 1;
 			gameDisplay.pauseGame ();
 			winText.text = "";
 			check1 = true;
-		} else if ((count >= 66) && (!check2)) {
+		} else if ((count >= 100) && (!check2)) {
 			level = 2;
 			gameDisplay.pauseGame ();
 			winText.text = "";
 			check2 = true;
-		} else if ((count >= 100) && (characterHealth.currentHealth > 0)) {
+		} else if ((count >= 200) && (characterHealth.currentHealth > 0)) {
 			winText.text = "YOU WIN!!!";
 			// Delay 3 seconds then load home scene
 			if (time > 0) {
