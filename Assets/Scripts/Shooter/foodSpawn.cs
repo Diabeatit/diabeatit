@@ -49,6 +49,11 @@ public class foodSpawn : MonoBehaviour {
     // Spawn rate in seconds
 	float maxSpawnRate = 10f;
 
+    // Last successful spawn's y coord
+    float lastSpawnY;
+    // Flag for setting lastSpawnY
+    bool firstSpawn = true;
+
 	// Use this for initialization
 	void Start () {
 		randomSpawn ();
@@ -77,7 +82,7 @@ public class foodSpawn : MonoBehaviour {
 	// Restarts food spawning
 	void restart() {
 		randomSpawn ();
-		InvokeRepeating ("IncreaseDifficulty", 0f, 50f);
+		InvokeRepeating ("IncreaseDifficulty", 0f, 60f);
 	}
 
 	/*	Destroys existing food objects on the screen
@@ -179,11 +184,11 @@ public class foodSpawn : MonoBehaviour {
 		if (!gameDisplay.isPaused ()) {
 			float spawnRate;
 
-			if(maxSpawnRate> 1f){
+			if (maxSpawnRate > 2f){
 				//generate the next spawn
 				spawnRate = Random.Range(1f,maxSpawnRate);
 			} else {
-				spawnRate = 1f;
+				spawnRate = 2f;
 			}
 
 			Invoke("randomSpawn",spawnRate);
@@ -207,28 +212,24 @@ public class foodSpawn : MonoBehaviour {
             Vector2 max = Camera.main.ViewportToWorldPoint (new Vector2 (1, 1));
             //instantiate GameObject
             GameObject newFood = instantiateNewFood(foodName);
-            /*
-            //generate a y coord and place a test box there to test for collision
+            
             //recalculate y until no collision
             bool validPos = false;
             float y = 0;
-            //GameObject testBox = GameObject.FindGameObjectWithTag("testBox");
-            if (!validPos) {
-            */
-            float y = Random.Range(min.y + .5f, max.y - 1.5f);
-            /*
-                //testBox.transform.position = new Vector2(max.x, y);
-                Collider2D collidesWith = Physics2D.OverlapBox(new Vector2(min.x, y), new Vector2(20f, 20f), 0f);
-                if (!collidesWith) {
-                    Debug.Log("no collision");
+            while (!validPos) {
+                y = Random.Range(min.y + .5f, max.y - 1.5f);
+                
+                if (!firstSpawn && Mathf.Abs(y - lastSpawnY) > 2f) {
                     validPos = true;
-                } else {
-                    Debug.Log("COLLISION");
+                    lastSpawnY = y;
+                } else if (firstSpawn) {
+                    firstSpawn = false;
+                    validPos = true;
+                    lastSpawnY = y;
                 }
             }
-            */
+            
             // generate a food object at a random posistion on the far right of the the screen
-            // with a y coord below the top ui bar
             newFood.transform.position = new Vector2 (max.x, y);
             foodSpawned++;
             //Schedule the next foodObject Spawning

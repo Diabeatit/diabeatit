@@ -30,26 +30,26 @@ public class popUp : MonoBehaviour {
 			break;
 		case 1:
 			transCanvas = GameObject.Find("transCanvas1");
-			break;
+                break;
 		case 2:
 			transCanvas = GameObject.Find("transCanvas2");
-			break;
+                break;
 		default:
 			break;
 		}
 		transCanvas.GetComponent<Canvas>().enabled = true;
-	}
+    }
 
-	// Update is called once per frame
-	void Update() {
-		// Check for paused state
-		if (!(gameDisplay.isPaused ())) {
+    // Update is called once per frame
+    void Update() {
+        // Check for paused state
+        if (!(gameDisplay.isPaused ())) {
 			// Insert what to do when game is not paused here
 
 		} else {
 			// Insert what to do when game is paused here
 			if (!active) {
-				displayTransition();
+                displayTransition();
 				active = true;
 			}
 			// On screen touch
