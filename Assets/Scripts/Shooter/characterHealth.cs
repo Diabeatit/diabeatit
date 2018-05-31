@@ -8,23 +8,33 @@ public class characterHealth : MonoBehaviour {
 	public static float currentHealth {get; set;}
 	public static float maxHealth {get; set;}
 	public static Slider healthbar; 
+	public static Sprite arrow;
+
 
 	void Start() {
 		healthbar = GameObject.Find("HealthBar").GetComponent<Slider>();
+		arrow = GameObject.Find ("arrow").GetComponent<Sprite> ();
 		maxHealth = 100f;
-		currentHealth = maxHealth;
+		currentHealth = 50f;
 		healthbar.value = CalculateHealth();
 	}
 		
 	void Update() {
-		currentHealth -= (1.5f * Time.deltaTime); //minus one every second
+		currentHealth -= (1.3f * Time.deltaTime); //minus one every second
 		healthbar.value = CalculateHealth (); //recalculate display
+
+		if (currentHealth <= 0) {
+			currentHealth = 0f;
+		} else if (currentHealth >= 100) {
+			currentHealth = 100f;
+		}
 	}
 
 	public static void TakeDamage(float amount) {
-		currentHealth -= amount;
+		currentHealth += amount;
 		healthbar.value = CalculateHealth ();
 		if (currentHealth <= 0) {
+			currentHealth = 0;
 			Die ();
 		}
 	}
