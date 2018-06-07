@@ -84,38 +84,43 @@ public class gameDisplay : MonoBehaviour {
 		} else if ((count >= 200) && (characterHealth.currentHealth > 0)) {
 			winText.text = "YOU WIN!!!";
 			// Delay 3 seconds then load home scene
-			if (time > 0) {
-				time -= Time.deltaTime;
-			} else {
+			//if (time > 0) {
+			//	time -= Time.deltaTime;
+			//} else {
 				Reset ();
 				SceneManager.LoadScene ("home");
-			}
+			//}
 		} else {
 
 		}
 	}
-
-	// Update count with appropriate value based on food string parameter
+    // Update count with appropriate value based on food string parameter
 	public static void updateDisplay(string food){
-		// Level 0
-		if (food == "Apple") {
-			count += 1;
-			characterHealth.TakeDamage(-1f);
-			Debug.Log ("I took damage");
+        // score doubling factor for being in green zone
+        int factor  = 1;
+        if (characterHealth.currentHealth >= 34f && characterHealth.currentHealth < 67f) {
+            factor = 2;
+        }
+        
+        // Level 0
+        if (food == "Apple") {
+		    count += (factor * 1);
+		    characterHealth.TakeDamage(1f);
+		    Debug.Log ("I took damage");
 		}
 		if (food == "Zucchini") {
-			count += 5;
+			count += (factor * 5);
 			characterHealth.TakeDamage(-5f);
 			Debug.Log ("I took damage");
 		}
 		if (food == "Candy") {
 			count -= 1;
-			characterHealth.TakeDamage(3f);
+			characterHealth.TakeDamage(10f);
 			Debug.Log ("I took damage");
 		}
 		// Level 1
 		if (food == "redMeat") {
-			count += 3;
+			count += (factor * 3);
 			characterHealth.TakeDamage(6f);
 			Debug.Log ("I took damage");
 		}
@@ -125,18 +130,18 @@ public class gameDisplay : MonoBehaviour {
 			Debug.Log ("I took damage");
 		}
 		if (food == "broc") {
-			count += 7;
+			count += (factor * 7);
 			characterHealth.TakeDamage(-10f);
 			Debug.Log ("I took damage");
 		}
 		// Level 2
 		if (food == "carrot") {
-			count += 3;
+			count += (factor * 3);
 			characterHealth.TakeDamage(5f);
 			Debug.Log ("I took damage");
 		}
 		if (food == "beans") {
-			count += 7;
+			count += (factor * 7);
 			characterHealth.TakeDamage(-3f);
 			Debug.Log ("I took damage");
 		}
