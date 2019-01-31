@@ -20,7 +20,7 @@ public class characterHealth : MonoBehaviour {
 	}
 		
 	void Update() {
-		currentHealth -= (0.25f * Time.deltaTime); //minus one every second
+		currentHealth -= (3f * Time.deltaTime); //minus one every second
 		healthbar.value = CalculateHealth (); //recalculate display
 
 		if (currentHealth <= 0) {
