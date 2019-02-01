@@ -20,23 +20,35 @@ public class characterHealth : MonoBehaviour {
 	}
 		
 	void Update() {
-		currentHealth -= (3f * Time.deltaTime); //minus one every second
+		currentHealth -= (1f * Time.deltaTime); // constant '1' defines how fast to reduce health
 		healthbar.value = CalculateHealth (); //recalculate display
 
-		if (currentHealth <= 0) {
+        // If health runs below 0 or over 100, game over!
+        /* Need to implement a timer to give time to player
+           to get back to the green zone */
+        if (currentHealth <= 0) {
 			currentHealth = 0f;
+            Die();
 		} else if (currentHealth >= 100) {
 			currentHealth = 100f;
+            Die();
 		}
 	}
 
 	public static void TakeDamage(float amount) {
 		currentHealth += amount;
 		healthbar.value = CalculateHealth ();
-		if (currentHealth <= 0) {
-			currentHealth = 0;
-			Die ();
-		}
+        
+        // If health runs below 0 or over 100, game over!
+        /* Need to implement a timer to give time to player
+           to get back to the green zone */
+        if (currentHealth <= 0f) {
+			currentHealth = 0f;
+			Die();
+		}else if(currentHealth >= 100f){
+            currentHealth = 100f;
+            Die();
+        }
 	}
 
 	static float CalculateHealth() {
