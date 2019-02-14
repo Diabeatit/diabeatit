@@ -3,20 +3,31 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
+using System;
 
 public class characterHealth : MonoBehaviour {
 	public static float currentHealth {get; set;}
 	public static float maxHealth {get; set;}
 	public static Slider healthbar; 
 	public static Sprite arrow;
+    public Image redImage;
+    public float flashSpeed = 5f;
+    public Color flashColor = new Color(255f, 0f, 0f, 255f);
+    public Color defColor = new Color(0f, 0f, 0f, 0f);
+    public static bool unhealthy = false;
+    public static bool routine = true;
+    public static Text warning;
 
+	void Start()
+    {
 
-	void Start() {
-		healthbar = GameObject.Find("HealthBar").GetComponent<Slider>();
+        healthbar = GameObject.Find("HealthBar").GetComponent<Slider>();
 		arrow = GameObject.Find ("arrow").GetComponent<Sprite> ();
-		maxHealth = 100f;
+        warning = GameObject.Find("Text").GetComponent<Text>();
+        maxHealth = 100f;
 		currentHealth = 50f;
 		healthbar.value = CalculateHealth();
+<<<<<<< Updated upstream
 	}
 		
 	void Update() {
@@ -26,11 +37,73 @@ public class characterHealth : MonoBehaviour {
 		if (currentHealth <= 0) {
 			currentHealth = 0f;
 		} else if (currentHealth >= 100) {
+=======
+
+    }
+
+    IEnumerator flashRed()
+    {
+        print(unhealthy);
+        if (unhealthy == true)
+        {
+
+            print("unhealthy");
+            warning.text = "WARNING";
+            redImage.color = flashColor;
+            yield return new WaitForSeconds(0.5f);
+            warning.text = "";
+            redImage.color = defColor;
+            yield return new WaitForSeconds(0.5f);
+            routine = true;
+
+        }
+
+    }
+
+
+    void Update() {
+      
+        currentHealth -= (1f * Time.deltaTime); // constant '1' defines how fast to reduce health
+		healthbar.value = CalculateHealth (); //recalculate display
+
+        // If health runs below 0 or over 100, game over!
+        /* Need to implement a timer to give time to player
+           to get back to the green zone */
+
+        if (currentHealth <= 0) {
+			currentHealth = 0f;
+            Die();
+		} 
+
+        else if (currentHealth >= 100) {
+>>>>>>> Stashed changes
 			currentHealth = 100f;
 		}
-	}
 
-	public static void TakeDamage(float amount) {
+        else if (currentHealth <= 20 || currentHealth >= 80)
+        {
+            unhealthy = true;
+
+            if (routine == true)
+            {
+                StopCoroutine(flashRed());
+                unhealthy = true;
+                routine = false;
+                StartCoroutine(flashRed());
+            }
+
+        }
+
+        else
+        {
+            unhealthy = false;
+        }
+
+    }
+
+
+
+    public static void TakeDamage(float amount) {
 		currentHealth += amount;
 		healthbar.value = CalculateHealth ();
 		if (currentHealth <= 0) {
