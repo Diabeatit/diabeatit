@@ -6,6 +6,7 @@ public class wigglePointer : MonoBehaviour
 {
     private bool forward;
     private float initPosX, initPosY;
+    public bool wiggle = false;
 
 
     // Start is called before the first frame update
@@ -30,8 +31,8 @@ public class wigglePointer : MonoBehaviour
                 forward = false;
             }
 
-  
-          }
+
+        }
         else
         {
             transform.position = new Vector3((float)(transform.position.x - 0.005), (float)(transform.position.y - 0.005), transform.position.z);
@@ -41,9 +42,11 @@ public class wigglePointer : MonoBehaviour
                 forward = true;
             }
         }
-
-
-
-
     }
+
+
+
+
+
 }
+
