@@ -49,9 +49,11 @@ public class characterHealth : MonoBehaviour {
             if (routine == true)
             {
                 StopCoroutine(flashRed());
+                print("routine stopped");
                 unhealthy = true;
                 routine = false;
                 StartCoroutine(flashRed());
+                print("routine started");
             }
 
         }
@@ -67,7 +69,7 @@ public class characterHealth : MonoBehaviour {
         print(unhealthy);
         if (unhealthy == true)
         {
-
+            print("in coroutine");
             print("unhealthy");
             warning.text = "WARNING";
             redImage.color = flashColor;
@@ -76,6 +78,7 @@ public class characterHealth : MonoBehaviour {
             redImage.color = defColor;
             yield return new WaitForSeconds(flashSpeed);
             routine = true;
+            print("exit coroutine");
 
         }
 

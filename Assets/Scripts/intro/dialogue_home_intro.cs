@@ -11,6 +11,7 @@ public class dialogue_home_intro : MonoBehaviour {
 	public Text bubble;
 	private int dialogue = 0;
 	public static bool intro = true;
+    public float waitTime = 5f;
 
 
 	// Initialize dialogue count and first message
@@ -66,7 +67,7 @@ public class dialogue_home_intro : MonoBehaviour {
 
     IEnumerator wait()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(waitTime);
         arrow.SetActive(true);
     }
 
