@@ -1,15 +1,18 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class dialogue_home_intro : MonoBehaviour {
 	public static dialogue_home_intro box;
-
 	public GameObject target;
+    public GameObject arrow;
 	public Text bubble;
 	private int dialogue = 0;
 	public static bool intro = true;
+    public float waitTime = 5f;
+
 
 	// Initialize dialogue count and first message
 	// intro flag to prevent intro dialogue from appearing more than once
@@ -51,10 +54,22 @@ public class dialogue_home_intro : MonoBehaviour {
 				bubble.text = "Click on the refrigerator to start!";
 			} else {
 				target.SetActive (false);
-			}
+                StartCoroutine(wait());
+
+            }
 			intro = false;
 			dialogue++;
+
+
 		}
 			
 	}
+
+    IEnumerator wait()
+    {
+        yield return new WaitForSeconds(waitTime);
+        arrow.SetActive(true);
+    }
+
 }
+

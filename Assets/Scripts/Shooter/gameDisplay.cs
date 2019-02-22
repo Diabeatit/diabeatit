@@ -116,7 +116,7 @@ public class gameDisplay : MonoBehaviour {
 		}
 		if (food == "Candy") {
 			count -= 1;
-			characterHealth.TakeDamage(10f);
+			characterHealth.TakeDamage(20f);
 			Debug.Log ("I took damage");
 		}
 		// Level 1
