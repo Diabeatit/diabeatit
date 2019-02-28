@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class foodGo : MonoBehaviour {
 
+    
     // create speed for food object
     private float speed;
 
 	private bool mouseEntered;
 
-	// Use this for initialization
+    Animator anim;
+    // Use this for initialization
 	void Start () {
 		
         speed = 3f; // set speed
-
+        anim = gameObject.GetComponent<Animator>();
+        anim.SetBool("isClickedOn", false);
 	}
 
 	// Update is called once per frame
@@ -39,8 +42,12 @@ public class foodGo : MonoBehaviour {
 			if (mouseEntered && Input.GetMouseButtonDown (0)) {
 				gameDisplay.updateDisplay (this.gameObject.tag);
 				print (this.gameObject.tag);
-				this.gameObject.SetActive (false);
-				Destroy (this.gameObject);
+
+                anim.SetBool("isClickedOn", true);
+                Debug.Log("ISCLICKED is now:" + anim.GetBool("isClickedOn"));
+                
+                Invoke("deactivate", 1);
+                Destroy (this.gameObject,1);
 				foodSpawn.foodConsumed++;
 			}
 		} 
@@ -53,4 +60,13 @@ public class foodGo : MonoBehaviour {
 	void OnMouseExit(){
 		mouseEntered = false;
 	}
+
+    // Function to be used by Invoke with delay
+    void deactivate()
+    {
+        this.gameObject.SetActive(false);
+    }
+
 }
+
+    
