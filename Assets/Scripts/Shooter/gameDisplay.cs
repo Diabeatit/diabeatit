@@ -70,17 +70,19 @@ public class gameDisplay : MonoBehaviour {
 		if ((count == 0) && (!introCheck)) {
 			// Pause to show intro transition image before gameplay starts
 			gameDisplay.pauseGame ();
-			introCheck = true;
+            winText.text = "LEVEL1";
+            introCheck = true;
 		} else if ((count >= 50) && (!check1)) {
 			level = 1;
 			gameDisplay.pauseGame ();
-			winText.text = "";
+			winText.text = "LEVEL2";
 			check1 = true;
 		} else if ((count >= 100) && (!check2)) {
 			level = 2;
 			gameDisplay.pauseGame ();
 			winText.text = "";
-			check2 = true;
+            winText.text = "LEVEL3";
+            check2 = true;
 		} else if ((count >= 200) && (characterHealth.currentHealth > 0)) {
 			winText.text = "YOU WIN!!!";
 			// Delay 3 seconds then load home scene
