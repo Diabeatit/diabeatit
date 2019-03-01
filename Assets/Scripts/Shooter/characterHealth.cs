@@ -44,39 +44,56 @@ public class characterHealth : MonoBehaviour {
 			currentHealth = 100f;
             Die();
 		}
-        else if (currentHealth <= (50-threshhold) || currentHealth >= (50+threshhold))
+        else if (currentHealth <= (50-threshhold))
         {
             unhealthy = true;
             WinText.SetActive(false);
 
             if (routine == true)
             {
-                StopCoroutine(flashRed());
+                StopCoroutine(flashRed("LOW GLUCOSE"));
                 print("routine stopped");
                 unhealthy = true;
                 routine = false;
-                StartCoroutine(flashRed());
+                StartCoroutine(flashRed("LOW GLUCOSE"));
                 print("routine started");
             }
 
         }
+        else if (currentHealth >= (50 + threshhold))
+        {
+            unhealthy = true;
+            WinText.SetActive(false);
 
+            if (routine == true)
+            {
+                StopCoroutine(flashRed("HIGH GLUCOSE"));
+                print("routine stopped");
+                unhealthy = true;
+                routine = false;
+                StartCoroutine(flashRed("HIGH GLUCOSE"));
+                print("routine started");
+            }
+
+        }
         else
         {
             unhealthy = false;
+
+            warning.text = "";
             WinText.SetActive(true);
 
         }
     }
 
-    IEnumerator flashRed()
+    IEnumerator flashRed(string text)
     {
         print(unhealthy);
         if (unhealthy == true)
         {
             print("in coroutine");
             print("unhealthy");
-            warning.text = "WARNING";
+            warning.text = text;
             redImage.color = flashColor;
             yield return new WaitForSeconds(flashSpeed);
             warning.text = "";
