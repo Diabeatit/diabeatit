@@ -17,6 +17,8 @@ public class characterHealth : MonoBehaviour {
     public static bool routine = true;
     public static Text warning;
     public int threshhold = 20;
+    public GameObject WinText;
+
 
 
     void Start() {
@@ -45,6 +47,7 @@ public class characterHealth : MonoBehaviour {
         else if (currentHealth <= (50-threshhold) || currentHealth >= (50+threshhold))
         {
             unhealthy = true;
+            WinText.SetActive(false);
 
             if (routine == true)
             {
@@ -61,6 +64,8 @@ public class characterHealth : MonoBehaviour {
         else
         {
             unhealthy = false;
+            WinText.SetActive(true);
+
         }
     }
 
