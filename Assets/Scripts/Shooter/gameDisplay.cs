@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class gameDisplay : MonoBehaviour {
 
 	// Time variables for creating delays
-	private float time = 3f;
+	private float time = 1f;
 
 	// Count of food consumed
 	public static int count;
@@ -29,8 +29,8 @@ public class gameDisplay : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		count = 0;
-		setCountText();
+		count = 0; // Game always starts with score of 0
+		setCountText(); // Displays score as 0
 		winText.text = "";
 	}
 
@@ -67,92 +67,150 @@ public class gameDisplay : MonoBehaviour {
 	// To be called in Update()
 	// Checks current count to check for and handle win/transition condition
 	public void checkProgress() {
-		if ((count == 0) && (!introCheck)) {
-			// Pause to show intro transition image before gameplay starts
-			gameDisplay.pauseGame ();
-            winText.text = "LEVEL1";
-            introCheck = true;
-		} else if ((count >= 50) && (!check1)) {
-			level = 1;
-			gameDisplay.pauseGame ();
-			winText.text = "LEVEL2";
-			check1 = true;
-		} else if ((count >= 100) && (!check2)) {
-			level = 2;
-			gameDisplay.pauseGame ();
-			winText.text = "";
-            winText.text = "LEVEL3";
-            check2 = true;
-		} else if ((count >= 200) && (characterHealth.currentHealth > 0)) {
-			winText.text = "YOU WIN!!!";
-			// Delay 3 seconds then load home scene
-			//if (time > 0) {
-			//	time -= Time.deltaTime;
-			//} else {
-				Reset ();
-				SceneManager.LoadScene ("home");
-			//}
-		} else {
+		//if ((count == 0) && (!introCheck)) {
+		//	// Pause to show intro transition image before gameplay starts
+		//	gameDisplay.pauseGame ();
+  //          winText.text = "LEVEL1";
+  //          introCheck = true;
+		//} else if ((count >= 50) && (!check1)) {
+		//	level = 1;
+		//	gameDisplay.pauseGame ();
+		//	winText.text = "LEVEL2";
+		//	check1 = true;
+		//} else if ((count >= 100) && (!check2)) {
+		//	level = 2;
+		//	gameDisplay.pauseGame ();
+		//	winText.text = "";
+  //          winText.text = "LEVEL3";
+  //          check2 = true;
+		//} else if ((count >= 200) && (characterHealth.currentHealth > 0)) {
+		//	winText.text = "YOU WIN!!!";
+		//	// Delay 3 seconds then load home scene
+		//	//if (time > 0) {
+		//	//	time -= Time.deltaTime;
+		//	//} else {
+		//		Reset ();
+		//		SceneManager.LoadScene ("home");
+		//	//}
+		//} else {
 
-		}
+		//}
 	}
     // Update count with appropriate value based on food string parameter
 	public static void updateDisplay(string food){
         // score doubling factor for being in green zone
         int factor  = 1;
-        if (characterHealth.currentHealth >= 34f && characterHealth.currentHealth < 67f) {
+        if (characterHealth.currentHealth <= 50f && characterHealth.currentHealth >= -50f) {
             factor = 2;
         }
-        
-        // Level 0
-        if (food == "Apple") {
-		    count += (factor * 1);
-		    characterHealth.TakeDamage(1f);
-		    Debug.Log ("I took damage");
-		}
-		if (food == "Zucchini") {
-			count += (factor * 5);
-			characterHealth.TakeDamage(-5f);
-			Debug.Log ("I took damage");
-		}
-		if (food == "Candy") {
-			count -= 1;
-			characterHealth.TakeDamage(20f);
-			Debug.Log ("I took damage");
-		}
-		// Level 1
-		if (food == "redMeat") {
-			count += (factor * 3);
-			characterHealth.TakeDamage(6f);
-			Debug.Log ("I took damage");
-		}
-		if (food == "juiceBox") {
-			count -= 4;
-			characterHealth.TakeDamage(15f);
-			Debug.Log ("I took damage");
-		}
-		if (food == "broc") {
-			count += (factor * 7);
-			characterHealth.TakeDamage(-10f);
-			Debug.Log ("I took damage");
-		}
-		// Level 2
-		if (food == "carrot") {
-			count += (factor * 3);
-			characterHealth.TakeDamage(5f);
-			Debug.Log ("I took damage");
-		}
-		if (food == "beans") {
-			count += (factor * 7);
-			characterHealth.TakeDamage(-3f);
-			Debug.Log ("I took damage");
-		}
-		if (food == "cake") {
-			count -= 5;
-			characterHealth.TakeDamage(10f);
-			Debug.Log ("I took damage");
-		}
-	}
+
+        // Following items are based off of Food Table doc Winter 2019
+        if (food == "appleJuice") {
+            count += (factor * 62);
+            characterHealth.TakeDamage(19f);
+            Debug.Log("I took damage");
+        }
+        if (food == "bread") {
+            count += (factor * 50);
+            characterHealth.TakeDamage(15f);
+            Debug.Log("I took damage");
+        }
+        if (food == "broccoli") {
+            count += (factor * 50);
+            characterHealth.TakeDamage(15f);
+            Debug.Log("I took damage");
+        }
+        if (food == "cheese") {
+            count += (factor * 50);
+            characterHealth.TakeDamage(15f);
+            Debug.Log("I took damage");
+        }
+        if (food == "cherry") {
+            count += (factor * 46);
+            characterHealth.TakeDamage(14f);
+            Debug.Log("I took damage");
+        }
+        if (food == "chicken") {
+            count += (factor * 37);
+            characterHealth.TakeDamage(11f);
+            Debug.Log("I took damage");
+        }
+        if (food == "cola") {
+            count += (factor * 68);
+            characterHealth.TakeDamage(20f);
+            Debug.Log("I took damage");
+        }
+        if (food == "cupcake") {// No cupcake in google doc, values are from muffin
+            count += (factor * 68);
+            characterHealth.TakeDamage(20f);
+            Debug.Log("I took damage");
+        }
+        if (food == "donut") {
+            count += (factor * 74);
+            characterHealth.TakeDamage(22f);
+            Debug.Log("I took damage");
+        }
+        if (food == "fries") {
+            count += (factor * 82);
+            characterHealth.TakeDamage(25f);
+            Debug.Log("I took damage");
+        }
+        if (food == "grapes") {
+            count += (factor * 54);
+            characterHealth.TakeDamage(16f);
+            Debug.Log("I took damage");
+        }
+        if (food == "iceCream") {
+            count += (factor * 58);
+            characterHealth.TakeDamage(17f);
+            Debug.Log("I took damage");
+        }
+        if (food == "milk") {
+            count += (factor * 22);
+            characterHealth.TakeDamage(7f);
+            Debug.Log("I took damage");
+        }
+        if (food == "pancakes") {
+            count += (factor * 100);
+            characterHealth.TakeDamage(30f);
+            Debug.Log("I took damage");
+        }
+        if (food == "pizza") {
+            count += (factor * 50);
+            characterHealth.TakeDamage(15f);
+            Debug.Log("I took damage");
+        }
+        if (food == "water") {
+            count += (factor * 20);
+            characterHealth.TakeDamage(-6f);
+            Debug.Log("I took damage");
+        }
+        if (food == "oneHrFifteenMin") {
+            count += (factor * 25);
+            characterHealth.TakeDamage(-8f);
+            Debug.Log("I took damage");
+        }
+        if (food == "oneHrThirtyMin") {
+            count += (factor * 50);
+            characterHealth.TakeDamage(-15f);
+            Debug.Log("I took damage");
+        }
+        if (food == "oneHrFourtyFiveMin") {
+            count += (factor * 75);
+            characterHealth.TakeDamage(-23f);
+            Debug.Log("I took damage");
+        }
+        if (food == "twoHrs") {
+            count += (factor * 100);
+            characterHealth.TakeDamage(-30f);
+            Debug.Log("I took damage");
+        }
+        if (food == "insulin") {
+            count += (factor * 100);
+            characterHealth.TakeDamage(-30f);
+            Debug.Log("I took damage");
+        }
+    }
 
 	// Accessor for count
 	public static string getCount(){

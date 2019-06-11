@@ -10,6 +10,9 @@ public class foodGo : MonoBehaviour {
 
 	private bool mouseEntered;
 
+
+    // Gives script access to animator component of gameObjects and then 
+    // initializes the condition parameter “isClickedOn” to false, added WI2019
     Animator anim;
     // Use this for initialization
 	void Start () {
@@ -39,6 +42,8 @@ public class foodGo : MonoBehaviour {
 				Destroy (gameObject);
 			}
 
+            // Added WI2019, plays "poof" after items get tapped and before they
+            // get destroyed
 			if (mouseEntered && Input.GetMouseButtonDown (0)) {
 				gameDisplay.updateDisplay (this.gameObject.tag);
 				print (this.gameObject.tag);
@@ -61,7 +66,7 @@ public class foodGo : MonoBehaviour {
 		mouseEntered = false;
 	}
 
-    // Function to be used by Invoke with delay
+    // Function to be used by Invoke with delay, added WI2019 for "poof"
     void deactivate()
     {
         this.gameObject.SetActive(false);

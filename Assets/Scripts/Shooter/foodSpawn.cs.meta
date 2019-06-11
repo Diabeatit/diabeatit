@@ -1,21 +1,44 @@
 fileFormatVersion: 2
 guid: 8cca2e1f90de545bd8a68705a91900d2
-timeCreated: 1519647599
-licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - apple: {fileID: 1216662769287692, guid: 9b25b3913464e437ab85ec46ab4f6ef5, type: 2}
-  - zucchini: {fileID: 1555913119797542, guid: 19d46ea7e6e9e47fabda853950d35e55, type: 2}
+  - apple: {fileID: 1216662769287692, guid: 9b25b3913464e437ab85ec46ab4f6ef5, type: 3}
+  - zucchini: {fileID: 1555913119797542, guid: 19d46ea7e6e9e47fabda853950d35e55, type: 3}
   - chocolate: {fileID: 1555913119797542, guid: 7cab60e8e69eb42f487c1bdda6b24994,
-      type: 2}
-  - redMeat: {fileID: 1549986305658510, guid: 3cfb68b18900741579fe8a223252530b, type: 2}
-  - beans: {fileID: 1549986305658510, guid: e3ec9c3fa19b0410aa1c578bed447dca, type: 2}
-  - cake: {fileID: 1549986305658510, guid: c549b26ac6c1645ba9c0704b54c4fdf7, type: 2}
-  - juiceBox: {fileID: 1549986305658510, guid: 269427aec63a9492582a75fa8015013f, type: 2}
-  - carrot: {fileID: 1216662769287692, guid: 5c23ac7b402b5491bbbe3e57bcc9fa54, type: 2}
-  - broc: {fileID: 1549986305658510, guid: 395f286d67c204d2f9054cdc66c6f65f, type: 2}
+      type: 3}
+  - redMeat: {fileID: 1549986305658510, guid: 3cfb68b18900741579fe8a223252530b, type: 3}
+  - juiceBox: {fileID: 1549986305658510, guid: 269427aec63a9492582a75fa8015013f, type: 3}
+  - broc: {fileID: 1549986305658510, guid: 395f286d67c204d2f9054cdc66c6f65f, type: 3}
+  - beans: {fileID: 1549986305658510, guid: e3ec9c3fa19b0410aa1c578bed447dca, type: 3}
+  - cake: {fileID: 1549986305658510, guid: c549b26ac6c1645ba9c0704b54c4fdf7, type: 3}
+  - carrot: {fileID: 1216662769287692, guid: 5c23ac7b402b5491bbbe3e57bcc9fa54, type: 3}
+  - appleJuice: {fileID: 2047485964182945680, guid: dd4828933fe0e40e38a5ca0c5b111fa2,
+      type: 3}
+  - bread: {fileID: 6655211545260998907, guid: f25f605f56cae4d86aef49e37e8b64ee, type: 3}
+  - broccoli: {fileID: 5030529186098210412, guid: 2f4091c6c888746ab99c119ede9247e8,
+      type: 3}
+  - cheese: {fileID: 8122390829744351553, guid: c32cf467bfd5e483c83ee31af7a44a5d,
+      type: 3}
+  - cherry: {fileID: 8122390829744351553, guid: 273a7fd4f463848b49d5e609ed5334f8,
+      type: 3}
+  - chicken: {fileID: 8122390829744351553, guid: c5c70b694917b49718c169b321a764a4,
+      type: 3}
+  - cola: {fileID: 8122390829744351553, guid: 49db4170629d34733badd1c7f7317058, type: 3}
+  - cupcake: {fileID: 8122390829744351553, guid: a08e7ae0263f444ecba49d248550f084,
+      type: 3}
+  - donut: {fileID: 8122390829744351553, guid: abb53daef499f4758a04bc676fd7e59e, type: 3}
+  - fries: {fileID: 8122390829744351553, guid: 78516d8a8289d4035a6fbc78cca6b7f3, type: 3}
+  - grapes: {fileID: 8122390829744351553, guid: 685502e14ce234fda8da924531a53372,
+      type: 3}
+  - iceCream: {fileID: 8122390829744351553, guid: bbaa4901de4424fee85f985280575478,
+      type: 3}
+  - milk: {fileID: 8122390829744351553, guid: 9b57ae0a9b1e44cd5af3927b25b58e97, type: 3}
+  - pancakes: {fileID: 8122390829744351553, guid: 3d969e10643e948c2bc97da332aebb01,
+      type: 3}
+  - pizza: {fileID: 8122390829744351553, guid: 610e21cb359144e5f97c26db991a4d22, type: 3}
+  - water: {fileID: 8122390829744351553, guid: b0423fe8d15384116bccdb5893a0ffe0, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
