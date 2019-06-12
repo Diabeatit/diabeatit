@@ -46,7 +46,7 @@ public class characterHealth : MonoBehaviour {
         if ((currentHealth < -90) || (currentHealth > 90))
         {
             // Arrow goes pass health dial -> ends game
-            Die();
+             Die();
         }
         else if (currentHealth < 80)
         // Arrow within low glucose range -> flash LOW GLUCOSE

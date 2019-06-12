@@ -67,34 +67,35 @@ public class gameDisplay : MonoBehaviour {
 	// To be called in Update()
 	// Checks current count to check for and handle win/transition condition
 	public void checkProgress() {
-		//if ((count == 0) && (!introCheck)) {
-		//	// Pause to show intro transition image before gameplay starts
-		//	gameDisplay.pauseGame ();
-  //          winText.text = "LEVEL1";
-  //          introCheck = true;
-		//} else if ((count >= 50) && (!check1)) {
-		//	level = 1;
-		//	gameDisplay.pauseGame ();
-		//	winText.text = "LEVEL2";
-		//	check1 = true;
-		//} else if ((count >= 100) && (!check2)) {
-		//	level = 2;
-		//	gameDisplay.pauseGame ();
-		//	winText.text = "";
-  //          winText.text = "LEVEL3";
-  //          check2 = true;
-		//} else if ((count >= 200) && (characterHealth.currentHealth > 0)) {
-		//	winText.text = "YOU WIN!!!";
-		//	// Delay 3 seconds then load home scene
-		//	//if (time > 0) {
-		//	//	time -= Time.deltaTime;
-		//	//} else {
-		//		Reset ();
-		//		SceneManager.LoadScene ("home");
-		//	//}
-		//} else {
+		if ((count == 0) && (!introCheck)) {
+			// Pause to show intro transition image before gameplay starts
+			gameDisplay.pauseGame ();
+            winText.text = "LEVEL1";
+            introCheck = true;
+		} else if ((count >= 500) && (!check1)) {
+            level = 1;
+            gameDisplay.pauseGame ();
+            winText.text = "LEVEL2";
+            check1 = true;
+		} else if ((count >= 2000) && (!check2)) {
+			level = 2;
+			gameDisplay.pauseGame ();
+			winText.text = "";
+            winText.text = "LEVEL3";
+            check2 = true; 
+        } else if ((count >= 5000) && (characterHealth.currentHealth > 0)) {
+			winText.text = "YOU WIN!!!";
+			// Delay 3 seconds then load home scene
+			//if (time > 0) {
+			//	time -= Time.deltaTime;
+			//} else {
+				//Reset ();
+				//SceneManager.LoadScene ("home"); 
 
-		//}
+            //}
+        } else {
+
+		}
 	}
     // Update count with appropriate value based on food string parameter
 	public static void updateDisplay(string food){
